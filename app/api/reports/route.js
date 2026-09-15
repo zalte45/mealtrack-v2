@@ -10,7 +10,8 @@ export async function GET(request) {
     const endDate = searchParams.get('endDate') || undefined;
 
     const report = await getOperationalReport(user.providerId, { startDate, endDate });
-    return NextResponse.json(report);
+    const { mealRecords, ...reportData } = report;
+    return NextResponse.json(reportData);
   } catch (error) {
     return NextResponse.json(
       { error: error.message || 'Failed to fetch report' },

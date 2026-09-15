@@ -2,7 +2,6 @@
   "name": "mealtrack-v2",
   "version": "2.0.0",
   "private": true,
-
   "scripts": {
     "dev": "next dev",
     "build": "prisma generate && next build",
@@ -13,11 +12,9 @@
     "prisma:seed": "node prisma/seed.js",
     "test": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --test tests/*.test.js"
   },
-
   "prisma": {
     "seed": "node prisma/seed.js"
   },
-
   "dependencies": {
     "@prisma/client": "^5.22.0",
     "bcryptjs": "^2.4.3",
@@ -30,7 +27,6 @@
     "tailwind-merge": "^2.5.5",
     "zod": "^3.23.8"
   },
-
   "devDependencies": {
     "autoprefixer": "^10.4.20",
     "eslint": "^8.57.1",

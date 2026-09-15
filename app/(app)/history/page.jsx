@@ -22,6 +22,7 @@ export default function MealHistoryPage() {
   const [status, setStatus] = useState('ALL');
   const [search, setSearch] = useState('');
   const [loading, setLoading] = useState(true);
+  const [page, setPage] = useState(1);
 
   // Void modal state
   const [isVoidModalOpen, setIsVoidModalOpen] = useState(false);
@@ -35,6 +36,7 @@ export default function MealHistoryPage() {
         ...(mealType !== 'ALL' && { mealType }),
         ...(status !== 'ALL' && { status }),
         ...(search && { search }),
+        page,
       }).toString();
 
       const res = await fetch(`/api/history?${query}`);
@@ -48,7 +50,7 @@ export default function MealHistoryPage() {
     } finally {
       setLoading(false);
     }
-  }, [date, mealType, status, search]);
+  }, [date, mealType, status, search, page]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -119,7 +121,7 @@ export default function MealHistoryPage() {
             <input
               type="text"
               value={search}
-              onChange={(e) => setSearch(e.target.value)}
+              onChange={(e) => { setSearch(e.target.value); setPage(1); }}
               placeholder="Search by 4-digit ID or name..."
               className="w-full rounded-xl border border-slate-200 bg-slate-50/50 pl-9 pr-3 py-2 text-xs text-slate-900 focus:border-[#3525CD] focus:bg-white focus:outline-none"
             />
@@ -128,7 +130,7 @@ export default function MealHistoryPage() {
           <input
             type="date"
             value={date}
-            onChange={(e) => setDate(e.target.value)}
+            onChange={(e) => { setDate(e.target.value); setPage(1); }}
             className="rounded-xl border border-slate-200 bg-slate-50/50 px-3 py-2 text-xs font-medium text-slate-700 focus:outline-none"
           />
         </div>
@@ -137,7 +139,7 @@ export default function MealHistoryPage() {
           {/* Meal Type Filter */}
           <select
             value={mealType}
-            onChange={(e) => setMealType(e.target.value)}
+            onChange={(e) => { setMealType(e.target.value); setPage(1); }}
             className="rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-xs font-bold text-slate-700"
           >
             <option value="ALL">All Meal Types</option>
@@ -149,7 +151,7 @@ export default function MealHistoryPage() {
           {/* Status Filter */}
           <select
             value={status}
-            onChange={(e) => setStatus(e.target.value)}
+            onChange={(e) => { setStatus(e.target.value); setPage(1); }}
             className="rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-xs font-bold text-slate-700"
           >
             <option value="ALL">All Statuses</option>
@@ -247,6 +249,30 @@ export default function MealHistoryPage() {
               </tbody>
             </table>
           </div>
+          
+          {historyData.summary?.totalRecords > 100 && (
+            <div className="flex items-center justify-between border-t border-slate-100 bg-slate-50 px-4 py-3 text-xs font-medium text-slate-500">
+              <span>
+                Showing {((page - 1) * 100) + 1} to {Math.min(page * 100, historyData.summary.totalRecords)} of {historyData.summary.totalRecords} records
+              </span>
+              <div className="flex items-center gap-2">
+                <button
+                  disabled={page === 1}
+                  onClick={() => setPage((p) => p - 1)}
+                  className="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-xs font-bold text-slate-700 hover:bg-slate-50 disabled:opacity-50 transition"
+                >
+                  Previous
+                </button>
+                <button
+                  disabled={page * 100 >= historyData.summary.totalRecords}
+                  onClick={() => setPage((p) => p + 1)}
+                  className="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-xs font-bold text-slate-700 hover:bg-slate-50 disabled:opacity-50 transition"
+                >
+                  Next
+                </button>
+              </div>
+            </div>
+          )}
         </div>
       )}
 

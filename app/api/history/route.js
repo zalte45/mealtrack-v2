@@ -11,6 +11,7 @@ export async function GET(request) {
     const mealType = searchParams.get('mealType') || 'ALL';
     const status = searchParams.get('status') || 'ALL';
     const search = searchParams.get('search') || '';
+    const page = searchParams.get('page') || 1;
 
     const history = await getMealHistory(user.providerId, {
       date,
@@ -18,6 +19,7 @@ export async function GET(request) {
       mealType,
       status,
       search,
+      page,
     });
 
     return NextResponse.json(history);
