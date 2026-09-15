@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><title>Settings - MealTrack</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "secondary-fixed-dim": "#4edea3", "inverse-surface": "#283044", "surface-container-highest": "#dae2fd", "surface-container-high": "#e2e7ff", "tertiary": "#684000", "on-primary-fixed-variant": "#3323cc", "surface-container": "#eaedff", "secondary": "#006c49", "error": "#ba1a1a", "on-tertiary-fixed": "#2a1700", "tertiary-container": "#885500", "on-tertiary": "#ffffff", "on-primary-container": "#dad7ff", "on-secondary-fixed-variant": "#005236", "surface": "#faf8ff", "inverse-on-surface": "#eef0ff", "on-secondary-container": "#00714d", "secondary-container": "#6cf8bb", "primary": "#3525cd", "on-error-container": "#93000a", "outline-variant": "#c7c4d8", "surface-dim": "#d2d9f4", "on-surface-variant": "#464555", "on-tertiary-container": "#ffd4a4", "on-primary-fixed": "#0f0069", "surface-variant": "#dae2fd", "on-secondary": "#ffffff", "tertiary-fixed-dim": "#ffb95f", "primary-fixed-dim": "#c3c0ff", "on-primary": "#ffffff", "on-secondary-fixed": "#002113", "outline": "#777587", "background": "#faf8ff", "primary-fixed": "#e2dfff", "secondary-fixed": "#6ffbbe", "on-surface": "#131b2e", "on-error": "#ffffff", "tertiary-fixed": "#ffddb8", "surface-container-low": "#f2f3ff", "primary-container": "#4f46e5", "surface-container-lowest": "#ffffff", "inverse-primary": "#c3c0ff", "error-container": "#ffdad6", "surface-tint": "#4d44e3", "surface-bright": "#faf8ff", "on-background": "#131b2e", "on-tertiary-fixed-variant": "#653e00" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": { "margin": "1rem", "margin-desktop": "2rem", "gutter": "1rem", "space-xs": "0.25rem", "gutter-desktop": "1.5rem", "space-sm": "0.5rem", "space-lg": "1.5rem", "gutter-tablet": "1.25rem", "space-md": "1rem", "margin-tablet": "1.5rem", "space-xl": "2rem" }, "fontFamily": { "body-lg": ["Inter"], "headline-xl": ["Plus Jakarta Sans"], "headline-sm": ["Plus Jakarta Sans"], "headline-md": ["Plus Jakarta Sans"], "data-metric": ["Plus Jakarta Sans"], "label-md": ["Inter"], "headline-lg-mobile": ["Plus Jakarta Sans"], "headline-xl-mobile": ["Plus Jakarta Sans"], "body-md": ["Inter"], "headline-lg": ["Plus Jakarta Sans"], "body-sm": ["Inter"], "label-lg": ["Inter"], "label-sm": ["Inter"] }, "fontSize": { "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}], "headline-xl": ["32px", {"lineHeight": "40px", "fontWeight": "700"}], "headline-sm": ["16px", {"lineHeight": "22px", "fontWeight": "600"}], "headline-md": ["18px", {"lineHeight": "24px", "fontWeight": "600"}], "data-metric": ["28px", {"lineHeight": "32px", "fontWeight": "700"}], "label-md": ["12px", {"lineHeight": "16px", "fontWeight": "500"}], "headline-lg-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "600"}], "headline-xl-mobile": ["26px", {"lineHeight": "34px", "fontWeight": "700"}], "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}], "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "600"}], "body-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}], "label-lg": ["14px", {"lineHeight": "20px", "fontWeight": "600"}], "label-sm": ["11px", {"lineHeight": "14px", "letterSpacing": "0.05em", "fontWeight": "600"}] } } } };</script><style>@layer base{html,body{width:100%;margin:0;padding:0;background-color:#faf8ff;}.pb-safe{padding-bottom:calc(env(safe-area-inset-bottom, 0px) + 0.5rem);}.pt-safe{padding-top:env(safe-area-inset-top, 0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}input,button,a{-webkit-tap-highlight-color:transparent;}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="min-h-full bg-surface text-on-surface flex flex-col font-body-md text-body-md"><header class="fixed top-0 inset-x-0 z-50 bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] pt-safe"><div class="h-16 px-gutter flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-xs min-w-0"><button class="w-11 h-11 flex items-center justify-center rounded-xl hover:bg-surface-container text-on-surface transition-colors" onclick="history.back()" type="button"><span class="material-symbols-outlined text-[24px]">arrow_back</span></button><img alt="MealTrack Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WKMcyzS2fXMBJjoDT2fuRc4X320g_bpLK9T7-VC1PChSnNayf47RhvX6Fjkm7fOxZ75iXN7HMCTkr1FXWB2zUskpn3EC2AJBbpD_dXI19hEV2SxZi-X2dyVb33Dv3RNNigGl_16-1AfGOBFCyES7dCymwSAi7b55h4mPtMx8NnFM8-fbpfxMWb6_hkrtCCkXHSKyScf2XLoLVFJ_jJqa0SukJL7DIHfDawEZtzzcmBF883882595IZYyE"/><h1 class="font-headline-sm text-headline-sm text-on-surface truncate font-bold">Settings</h1></div><div class="flex items-center gap-space-xs flex-shrink-0"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfDK9zn2khvr0fDagfCQcEE_F6yEv7A-qnTUI1zlnwCuUPbciPqnNg7F48auBQ6-V2IjkLHmwYrgDZRAgnP6yhAxkylNP0a4x98Vk9clKi4Jnt9C1XfFMjWF-rQ2d3QgCBDsqwuG5T7T66AjNzTsSn9ocgG0gw7E95aThnuGjEfF8baeHL9n21eZWpd6CqC29VNSXXUhH_JNFGaj9SZXV08fdaqxTKlM0tJLXV_HVdFn_JJbwSt5-N9Q"/></div></div></header><main class="flex-1 flex flex-col relative w-full pt-16 pb-safe px-margin bg-surface"><div class="flex flex-col w-full space-y-space-md pb-space-xl">
+<div class="flex flex-col gap-space-xs pt-space-xs">
+<div class="flex items-center justify-between">
+<p class="font-body-md text-body-md text-on-surface-variant">Manage your provider account and operational preferences.</p>
+<div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-secondary-container text-on-secondary-container transition-all duration-300" id="saved-badge">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-label-sm text-label-sm">All changes saved</span>
+</div>
+</div>
+</div>
+<div class="relative overflow-hidden rounded-xl bg-surface-container-low shadow-sm p-space-md flex items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="relative w-14 h-14 rounded-xl overflow-hidden shrink-0 shadow-sm bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="High-end professional commercial kitchen command station with stainless steel prep counters and steam tables under soft warm atmospheric lighting, slate and indigo interior tones, hyper-clean modern culinary workspace." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBoL1V2SvXYDxEx2xp4KqRr5n3pNE4IBYE7t32N7yd8Y2rgtBd1mayWqx8cWOCu9h1zPORGjoliaDkBa9RwoNZ20joU9GNUw3DUDKny7qTjQZt8JscgPW3CgvopDRcgpquH0qvUNHNPuRj2qS9ogaR7y8SrtqaukAPhArUA4vmaU1iY9A0ExogtUpJlJ87SWaPziTCMXDkxizq4AFhN27w_qZHYQ3yu1WJU4jACRgPNQihov1TgHDQ0Ew"/>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-space-xs flex-wrap">
+<span class="font-headline-sm text-headline-sm text-on-surface truncate">Central Facility #01</span>
+<span class="px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm">Active Hub</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant truncate">Operational node serving 3 daily batch shifts</p>
+</div>
+</div>
+<div class="hidden sm:flex items-center gap-1 px-3 py-1.5 rounded-lg bg-surface-container text-primary font-label-md text-label-md shrink-0">
+<span class="material-symbols-outlined text-[16px]">microwave</span>
+<span>Tier 1 Dispatch</span>
+</div>
+</div>
+<section class="flex flex-col rounded-xl bg-surface-container-lowest shadow-sm p-space-md space-y-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<div class="w-8 h-8 rounded-lg bg-primary-fixed flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">domain</span>
+</div>
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Organization Profile</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Core business details &amp; operating schedules</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">corporate_fare</span>
+</div>
+<div class="flex flex-col space-y-space-sm">
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-md text-on-surface-variant">Organization Name</label>
+<div class="flex items-center rounded-lg bg-surface-container-low px-3 py-2">
+<input class="w-full bg-transparent font-body-md text-body-md text-on-surface outline-none" type="text" value="Urban Tiffin &amp; Mess Services Co."/>
+<span class="material-symbols-outlined text-on-surface-variant text-[18px]">verified</span>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-sm">
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-md text-on-surface-variant">Provider Identifier</label>
+<div class="flex items-center justify-between rounded-lg bg-surface-container-low px-3 py-2">
+<span class="font-label-lg text-label-lg text-on-surface font-mono tracking-wide">PRV-84920</span>
+<button class="flex items-center gap-1 text-primary hover:text-on-primary-fixed-variant transition-colors p-1 -m-1" onclick="copyProviderId(this)" type="button">
+<span class="material-symbols-outlined text-[16px]">content_copy</span>
+<span class="font-label-sm text-label-sm">Copy</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-md text-on-surface-variant">Business Type</label>
+<div class="flex items-center rounded-lg bg-surface-container-low px-3 py-2">
+<span class="font-body-md text-body-md text-on-surface truncate">Mess / Catering / Daily Meal</span>
+<span class="material-symbols-outlined text-outline-variant text-[18px] ml-auto">storefront</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-sm">
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-md text-on-surface-variant">Primary Timezone</label>
+<div class="relative rounded-lg bg-surface-container-low px-3 py-2 flex items-center">
+<select class="w-full bg-transparent font-body-md text-body-md text-on-surface outline-none appearance-none pr-6 cursor-pointer">
+<option selected="">America/New_York (UTC-04:00)</option>
+<option>America/Chicago (UTC-05:00)</option>
+<option>America/Denver (UTC-06:00)</option>
+<option>America/Los_Angeles (UTC-07:00)</option>
+</select>
+<span class="material-symbols-outlined text-on-surface-variant text-[18px] absolute right-3 pointer-events-none">expand_more</span>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-md text-on-surface-variant">Base Billing Currency</label>
+<div class="flex items-center justify-between rounded-lg bg-surface-container-low px-3 py-2">
+<div class="flex items-center gap-2">
+<span class="w-5 h-5 rounded-full bg-primary-fixed text-primary flex items-center justify-center font-label-sm text-label-sm font-bold">$</span>
+<span class="font-body-md text-body-md text-on-surface font-semibold">USD ($)</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Fixed Settlement</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-2 pt-1">
+<label class="font-label-md text-label-md text-on-surface-variant flex items-center justify-between">
+<span>Active Dispatch Shifts</span>
+<span class="font-label-sm text-label-sm text-secondary font-medium">3 shifts operational</span>
+</label>
+<div class="flex flex-col gap-1.5">
+<label class="flex items-center justify-between p-2.5 rounded-lg bg-surface-container-low hover:bg-surface-container transition-colors cursor-pointer">
+<div class="flex items-center gap-space-xs">
+<input checked="" class="w-4 h-4 rounded text-primary focus:ring-0 accent-primary cursor-pointer" type="checkbox"/>
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg text-on-surface">Breakfast Service</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">07:00 - 10:00 EST</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded-md bg-surface-container-highest text-primary font-label-sm text-label-sm">Window A</span>
+</label>
+<label class="flex items-center justify-between p-2.5 rounded-lg bg-surface-container-low hover:bg-surface-container transition-colors cursor-pointer">
+<div class="flex items-center gap-space-xs">
+<input checked="" class="w-4 h-4 rounded text-primary focus:ring-0 accent-primary cursor-pointer" type="checkbox"/>
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg text-on-surface">Lunch Service</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">11:30 - 15:00 EST</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded-md bg-surface-container-highest text-primary font-label-sm text-label-sm">Peak Volume</span>
+</label>
+<label class="flex items-center justify-between p-2.5 rounded-lg bg-surface-container-low hover:bg-surface-container transition-colors cursor-pointer">
+<div class="flex items-center gap-space-xs">
+<input checked="" class="w-4 h-4 rounded text-primary focus:ring-0 accent-primary cursor-pointer" type="checkbox"/>
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg text-on-surface">Dinner Service</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">18:00 - 21:30 EST</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded-md bg-surface-container-highest text-primary font-label-sm text-label-sm">Window B</span>
+</label>
+</div>
+</div>
+</div>
+</section>
+<section class="flex flex-col rounded-xl bg-surface-container-lowest shadow-sm p-space-md space-y-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<div class="w-8 h-8 rounded-lg bg-secondary-fixed flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[18px]">admin_panel_settings</span>
+</div>
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Account Owner &amp; Access</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Primary contact credentials &amp; authentication</p>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-primary-fixed text-primary font-label-sm text-label-sm">Admin Access</span>
+</div>
+<div class="flex items-center gap-space-sm p-3 rounded-lg bg-surface-container-low">
+<div class="relative w-12 h-12 rounded-full overflow-hidden shrink-0 shadow-sm bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Close up modern headshot of Elena Rostova, a focused woman operations director wearing minimalist navy corporate culinary uniform in an industrial kitchen office background with warm lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuArGsGQGTeZZ7prifYd--ThHiw7NnfpA3HPVlPPYzEizEYzN7KPkxPBxgAtc26OQWagEptm4h6KrtmNR11Jn4cRTWFsVCJD6AbY4hFhGBbs2jj7oUGSovy5ge5YugRTGfWh0Y3a61ZmRl_S4P5_dvZT8vw8T4c410eN-kboIUdJEHTT_o3PSHtzV_G_HsGUeRxo95IaqJ0GoZ4dQav4V9AE-jss5W4AHpf0Q4v4z2HQmcIZeZMIUeQLEA"/>
+</div>
+<div class="flex flex-col min-w-0 flex-1">
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-headline-sm text-on-surface truncate">Elena Rostova</span>
+<span class="px-2 py-0.2 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm">Owner</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">elena@mealtrack.ops</span>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-sm">
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-md text-on-surface-variant">Registered Phone</label>
+<div class="flex items-center justify-between rounded-lg bg-surface-container-low px-3 py-2">
+<span class="font-body-md text-body-md text-on-surface font-mono">+1 (555) 019-2834</span>
+<span class="material-symbols-outlined text-secondary text-[16px]">call</span>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-md text-on-surface-variant">2-Factor Authentication</label>
+<div class="flex items-center justify-between rounded-lg bg-surface-container-low px-3 py-2">
+<div class="flex items-center gap-1.5 min-w-0">
+<span class="material-symbols-outlined text-secondary text-[16px]" style="font-variation-settings: 'FILL' 1;">security</span>
+<span class="font-body-sm text-body-sm text-on-surface font-medium truncate">SMS &amp; Authenticator</span>
+</div>
+<span class="px-1.5 py-0.5 rounded bg-secondary-container text-on-secondary-container font-label-sm text-label-sm shrink-0">Active</span>
+</div>
+</div>
+</div>
+<button class="w-full flex items-center justify-center gap-2 py-2.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">password</span>
+<span class="font-label-lg text-label-lg">Update Security Credentials</span>
+</button>
+</section>
+<section class="flex flex-col rounded-xl bg-surface-container-lowest shadow-sm p-space-md space-y-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<div class="w-8 h-8 rounded-lg bg-tertiary-fixed flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+</div>
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Operational Parameters</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Terminal behaviors &amp; dispensing safeguards</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">instant_mix</span>
+</div>
+<div class="flex flex-col space-y-space-sm">
+<div class="flex items-center justify-between p-3 rounded-lg bg-surface-container-low gap-space-sm">
+<div class="flex flex-col min-w-0">
+<span class="font-label-lg text-label-lg text-on-surface">Low Balance Warning Threshold</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Visual prompt on scanner when meals remain low</span>
+</div>
+<div class="flex items-center gap-1.5 bg-surface-container rounded-lg px-2.5 py-1 shrink-0">
+<span class="font-label-md text-label-md text-on-surface-variant">≤</span>
+<input class="w-8 text-center bg-transparent font-headline-sm text-headline-sm text-primary font-bold outline-none" max="10" min="1" type="number" value="3"/>
+<span class="font-body-sm text-body-sm text-on-surface-variant">meals</span>
+</div>
+</div>
+<div class="flex items-center justify-between p-3 rounded-lg bg-surface-container-low gap-space-sm">
+<div class="flex flex-col min-w-0">
+<span class="font-label-lg text-label-lg text-on-surface">Auto-reset Counter After Meal</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Clears screen ready for next badge after 3s delay</span>
+</div>
+<button aria-checked="true" class="w-12 h-6 rounded-full bg-primary flex items-center p-0.5 transition-colors cursor-pointer shrink-0" onclick="toggleSwitch(this)" role="switch" type="button">
+<span class="w-5 h-5 rounded-full bg-on-primary shadow-sm transform translate-x-6 transition-transform"></span>
+</button>
+</div>
+<div class="flex items-center justify-between p-3 rounded-lg bg-surface-container-low gap-space-sm">
+<div class="flex flex-col min-w-0">
+<span class="font-label-lg text-label-lg text-on-surface">Sound Confirmation Chime</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Audio feedback on valid RFID tap &amp; meal burn</span>
+</div>
+<button aria-checked="true" class="w-12 h-6 rounded-full bg-primary flex items-center p-0.5 transition-colors cursor-pointer shrink-0" onclick="toggleSwitch(this)" role="switch" type="button">
+<span class="w-5 h-5 rounded-full bg-on-primary shadow-sm transform translate-x-6 transition-transform"></span>
+</button>
+</div>
+<div class="flex items-center justify-between p-3 rounded-lg bg-surface-container-low gap-space-sm">
+<div class="flex flex-col min-w-0">
+<span class="font-label-lg text-label-lg text-on-surface">Allow Staff Meal Voiding</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Supervisor keycard required to reverse transaction</span>
+</div>
+<div class="flex items-center gap-1 px-2 py-1 rounded bg-error-container text-on-error-container shrink-0">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+<span class="font-label-sm text-label-sm font-semibold">Enforced</span>
+</div>
+</div>
+<div class="flex items-center justify-between p-3 rounded-lg bg-surface-container-low gap-space-sm">
+<div class="flex flex-col min-w-0">
+<span class="font-label-lg text-label-lg text-on-surface">Default Customer ID Length</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Keypad pin &amp; barcode match length</span>
+</div>
+<div class="px-2.5 py-1 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md font-mono shrink-0">
+          4 Digits
+        </div>
+</div>
+</div>
+</section>
+<div class="sticky bottom-4 z-20 flex items-center gap-space-sm p-space-sm rounded-xl bg-surface-container-highest/95 backdrop-blur-md shadow-lg">
+<button class="flex-1 py-2.5 rounded-lg bg-surface-container-lowest text-on-surface font-label-lg text-label-lg hover:bg-surface-container transition-colors shadow-sm text-center" onclick="handleCancel()" type="button">
+      Cancel
+    </button>
+<button class="flex-1 py-2.5 rounded-lg bg-primary text-on-primary font-label-lg text-label-lg hover:bg-on-primary-fixed-variant transition-colors shadow-sm flex items-center justify-center gap-1.5" onclick="handleSave(this)" type="button">
+<span class="material-symbols-outlined text-[18px]">check</span>
+<span>Save Settings</span>
+</button>
+</div>
+</div>
+<script>
+  function toggleSwitch(btn) {
+    const isChecked = btn.getAttribute('aria-checked') === 'true';
+    const knob = btn.querySelector('span');
+    if (isChecked) {
+      btn.setAttribute('aria-checked', 'false');
+      btn.classList.remove('bg-primary');
+      btn.classList.add('bg-outline-variant');
+      knob.classList.remove('translate-x-6');
+      knob.classList.add('translate-x-0');
+    } else {
+      btn.setAttribute('aria-checked', 'true');
+      btn.classList.remove('bg-outline-variant');
+      btn.classList.add('bg-primary');
+      knob.classList.remove('translate-x-0');
+      knob.classList.add('translate-x-6');
+    }
+    triggerPendingSave();
+  }
+
+  function triggerPendingSave() {
+    const badge = document.getElementById('saved-badge');
+    if (badge) {
+      badge.classList.remove('bg-secondary-container', 'text-on-secondary-container');
+      badge.classList.add('bg-tertiary-fixed', 'text-on-tertiary-fixed');
+      badge.innerHTML = `
+        <span class="material-symbols-outlined text-[14px]">pending</span>
+        <span class="font-label-sm text-label-sm">Unsaved changes</span>
+      `;
+    }
+  }
+
+  function handleSave(btn) {
+    const originalText = btn.innerHTML;
+    btn.innerHTML = `<span class="material-symbols-outlined text-[18px] animate-spin">refresh</span><span>Saving...</span>`;
+    setTimeout(() => {
+      btn.innerHTML = originalText;
+      const badge = document.getElementById('saved-badge');
+      if (badge) {
+        badge.classList.remove('bg-tertiary-fixed', 'text-on-tertiary-fixed');
+        badge.classList.add('bg-secondary-container', 'text-on-secondary-container');
+        badge.innerHTML = `
+          <span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+          <span class="font-label-sm text-label-sm">All changes saved</span>
+        `;
+      }
+    }, 600);
+  }
+
+  function handleCancel() {
+    const badge = document.getElementById('saved-badge');
+    if (badge) {
+      badge.classList.remove('bg-tertiary-fixed', 'text-on-tertiary-fixed');
+      badge.classList.add('bg-secondary-container', 'text-on-secondary-container');
+      badge.innerHTML = `
+        <span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+        <span class="font-label-sm text-label-sm">All changes saved</span>
+      `;
+    }
+  }
+
+  function copyProviderId(btn) {
+    navigator.clipboard?.writeText('PRV-84920');
+    const label = btn.querySelector('span:last-child');
+    if (label) {
+      const prev = label.innerText;
+      label.innerText = 'Copied!';
+      setTimeout(() => {
+        label.innerText = prev;
+      }, 1500);
+    }
+  }
+</script></main></body></html>

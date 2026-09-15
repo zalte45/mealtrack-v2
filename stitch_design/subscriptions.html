@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><title>MealTrack Admin</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "secondary-fixed-dim": "#4edea3", "inverse-surface": "#283044", "surface-container-highest": "#dae2fd", "surface-container-high": "#e2e7ff", "tertiary": "#684000", "on-primary-fixed-variant": "#3323cc", "surface-container": "#eaedff", "secondary": "#006c49", "error": "#ba1a1a", "on-tertiary-fixed": "#2a1700", "tertiary-container": "#885500", "on-tertiary": "#ffffff", "on-primary-container": "#dad7ff", "on-secondary-fixed-variant": "#005236", "surface": "#faf8ff", "inverse-on-surface": "#eef0ff", "on-secondary-container": "#00714d", "secondary-container": "#6cf8bb", "primary": "#3525cd", "on-error-container": "#93000a", "outline-variant": "#c7c4d8", "surface-dim": "#d2d9f4", "on-surface-variant": "#464555", "on-tertiary-container": "#ffd4a4", "on-primary-fixed": "#0f0069", "surface-variant": "#dae2fd", "on-secondary": "#ffffff", "tertiary-fixed-dim": "#ffb95f", "primary-fixed-dim": "#c3c0ff", "on-primary": "#ffffff", "on-secondary-fixed": "#002113", "outline": "#777587", "background": "#faf8ff", "primary-fixed": "#e2dfff", "secondary-fixed": "#6ffbbe", "on-surface": "#131b2e", "on-error": "#ffffff", "tertiary-fixed": "#ffddb8", "surface-container-low": "#f2f3ff", "primary-container": "#4f46e5", "surface-container-lowest": "#ffffff", "inverse-primary": "#c3c0ff", "error-container": "#ffdad6", "surface-tint": "#4d44e3", "surface-bright": "#faf8ff", "on-background": "#131b2e", "on-tertiary-fixed-variant": "#653e00" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": { "margin": "1rem", "margin-desktop": "2rem", "gutter": "1rem", "space-xs": "0.25rem", "gutter-desktop": "1.5rem", "space-sm": "0.5rem", "space-lg": "1.5rem", "gutter-tablet": "1.25rem", "space-md": "1rem", "margin-tablet": "1.5rem", "space-xl": "2rem" }, "fontFamily": { "body-lg": ["Inter"], "headline-xl": ["Plus Jakarta Sans"], "headline-sm": ["Plus Jakarta Sans"], "headline-md": ["Plus Jakarta Sans"], "data-metric": ["Plus Jakarta Sans"], "label-md": ["Inter"], "headline-lg-mobile": ["Plus Jakarta Sans"], "headline-xl-mobile": ["Plus Jakarta Sans"], "body-md": ["Inter"], "headline-lg": ["Plus Jakarta Sans"], "body-sm": ["Inter"], "label-lg": ["Inter"], "label-sm": ["Inter"] }, "fontSize": { "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}], "headline-xl": ["32px", {"lineHeight": "40px", "fontWeight": "700"}], "headline-sm": ["16px", {"lineHeight": "22px", "fontWeight": "600"}], "headline-md": ["18px", {"lineHeight": "24px", "fontWeight": "600"}], "data-metric": ["28px", {"lineHeight": "32px", "fontWeight": "700"}], "label-md": ["12px", {"lineHeight": "16px", "fontWeight": "500"}], "headline-lg-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "600"}], "headline-xl-mobile": ["26px", {"lineHeight": "34px", "fontWeight": "700"}], "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}], "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "600"}], "body-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}], "label-lg": ["14px", {"lineHeight": "20px", "fontWeight": "600"}], "label-sm": ["11px", {"lineHeight": "14px", "letterSpacing": "0.05em", "fontWeight": "600"}] } } } };</script><style>@layer base{html,body{width:100%;margin:0;padding:0;background-color:#faf8ff;}.pb-safe{padding-bottom:calc(env(safe-area-inset-bottom, 0px) + 0.5rem);}.pt-safe{padding-top:env(safe-area-inset-top, 0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}input,button,a{-webkit-tap-highlight-color:transparent;}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="min-h-full bg-surface text-on-surface flex flex-col font-body-md text-body-md"><header class="fixed top-0 inset-x-0 z-50 bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] pt-safe"><div class="h-16 px-gutter flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm min-w-0"><button class="w-11 h-11 flex items-center justify-center rounded-xl hover:bg-surface-container transition-colors text-on-surface-variant" onclick="document.getElementById('side-drawer').classList.toggle('-translate-x-full');document.getElementById('drawer-backdrop').classList.toggle('hidden');" type="button"><span class="material-symbols-outlined text-[24px]">menu</span></button><div class="flex items-center gap-space-xs min-w-0"><img alt="MealTrack Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WKMcyzS2fXMBJjoDT2fuRc4X320g_bpLK9T7-VC1PChSnNayf47RhvX6Fjkm7fOxZ75iXN7HMCTkr1FXWB2zUskpn3EC2AJBbpD_dXI19hEV2SxZi-X2dyVb33Dv3RNNigGl_16-1AfGOBFCyES7dCymwSAi7b55h4mPtMx8NnFM8-fbpfxMWb6_hkrtCCkXHSKyScf2XLoLVFJ_jJqa0SukJL7DIHfDawEZtzzcmBF883882595IZYyE"/><div class="flex flex-col"><div class="flex items-center gap-space-xs"><span class="font-headline-md text-headline-md tracking-tight text-on-surface font-bold truncate">MealTrack</span><span class="px-1.5 py-0.5 rounded bg-surface-container text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">ADMIN</span></div><div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-secondary inline-block animate-pulse"></span><span class="font-label-sm text-label-sm text-secondary font-medium">Counter Online</span></div></div></div></div><div class="flex items-center gap-space-xs flex-shrink-0"><button class="w-11 h-11 flex items-center justify-center rounded-full hover:bg-surface-container relative transition-colors focus:outline-none" onclick="document.getElementById('profile-dropdown').classList.toggle('hidden')" type="button"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfDK9zn2khvr0fDagfCQcEE_F6yEv7A-qnTUI1zlnwCuUPbciPqnNg7F48auBQ6-V2IjkLHmwYrgDZRAgnP6yhAxkylNP0a4x98Vk9clKi4Jnt9C1XfFMjWF-rQ2d3QgCBDsqwuG5T7T66AjNzTsSn9ocgG0gw7E95aThnuGjEfF8baeHL9n21eZWpd6CqC29VNSXXUhH_JNFGaj9SZXV08fdaqxTKlM0tJLXV_HVdFn_JJbwSt5-N9Q"/></button></div></div><div class="hidden absolute right-4 top-16 w-64 bg-surface-container-lowest rounded-xl shadow-xl p-space-md flex flex-col gap-space-sm z-50 border-0" id="profile-dropdown"><div class="flex items-center gap-space-sm pb-space-sm"><img alt="Profile" class="w-10 h-10 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfDK9zn2khvr0fDagfCQcEE_F6yEv7A-qnTUI1zlnwCuUPbciPqnNg7F48auBQ6-V2IjkLHmwYrgDZRAgnP6yhAxkylNP0a4x98Vk9clKi4Jnt9C1XfFMjWF-rQ2d3QgCBDsqwuG5T7T66AjNzTsSn9ocgG0gw7E95aThnuGjEfF8baeHL9n21eZWpd6CqC29VNSXXUhH_JNFGaj9SZXV08fdaqxTKlM0tJLXV_HVdFn_JJbwSt5-N9Q"/><div class="flex flex-col min-w-0"><span class="font-headline-sm text-headline-sm text-on-surface truncate">Elena Rostova</span><span class="font-body-sm text-body-sm text-on-surface-variant truncate">elena@mealtrack.ops</span></div></div><div class="inline-flex items-center justify-start"><span class="px-2 py-0.5 rounded bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm uppercase font-semibold">Owner / Admin</span></div><div class="pt-space-xs"><a class="w-full flex items-center gap-space-xs px-space-sm py-2 rounded-lg text-error hover:bg-error-container hover:text-on-error-container font-label-md text-label-md transition-colors" data-path="login" href="#"><span class="material-symbols-outlined text-[18px]">logout</span><span>Sign Out</span></a></div></div></header><div class="hidden fixed inset-0 bg-inverse-surface/40 backdrop-blur-sm z-50 transition-opacity" id="drawer-backdrop" onclick="document.getElementById('side-drawer').classList.add('-translate-x-full');this.classList.add('hidden');"></div><aside class="fixed top-0 bottom-0 left-0 w-72 max-w-[85vw] bg-surface-container-lowest z-50 transform -translate-x-full transition-transform duration-300 ease-in-out flex flex-col shadow-2xl pt-safe" id="side-drawer"><div class="p-space-md flex items-center justify-between"><div class="flex items-center gap-space-xs"><img alt="MealTrack Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WKMcyzS2fXMBJjoDT2fuRc4X320g_bpLK9T7-VC1PChSnNayf47RhvX6Fjkm7fOxZ75iXN7HMCTkr1FXWB2zUskpn3EC2AJBbpD_dXI19hEV2SxZi-X2dyVb33Dv3RNNigGl_16-1AfGOBFCyES7dCymwSAi7b55h4mPtMx8NnFM8-fbpfxMWb6_hkrtCCkXHSKyScf2XLoLVFJ_jJqa0SukJL7DIHfDawEZtzzcmBF883882595IZYyE"/><span class="font-headline-md text-headline-md font-bold text-on-surface">MealTrack Hub</span></div><button class="w-11 h-11 flex items-center justify-center rounded-lg hover:bg-surface-container text-on-surface-variant" onclick="document.getElementById('side-drawer').classList.add('-translate-x-full');document.getElementById('drawer-backdrop').classList.add('hidden');" type="button"><span class="material-symbols-outlined">close</span></button></div><div class="flex-1 overflow-y-auto px-space-sm py-space-xs flex flex-col gap-1"><a class="flex items-center gap-space-sm px-space-md h-12 rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-on-surface" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[22px]">dashboard</span><span class="font-label-lg text-label-lg">Dashboard</span></a><a class="flex items-center gap-space-sm px-space-md h-12 rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-on-surface" data-path="customers" href="#"><span class="material-symbols-outlined text-[22px]">groups</span><span class="font-label-lg text-label-lg">Customers</span></a><a class="flex items-center gap-space-sm px-space-md h-12 rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-on-surface" data-path="subscriptions" href="#"><span class="material-symbols-outlined text-[22px]">card_membership</span><span class="font-label-lg text-label-lg">Subscriptions</span></a><a class="flex items-center gap-space-sm px-space-md h-12 rounded-xl text-primary bg-primary-fixed hover:bg-surface-container-high" data-path="meal-counter" href="#"><span class="material-symbols-outlined text-[22px]">countertops</span><span class="font-label-lg text-label-lg font-bold">Meal Counter (Active)</span></a><a class="flex items-center gap-space-sm px-space-md h-12 rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-on-surface" data-path="meal-history" href="#"><span class="material-symbols-outlined text-[22px]">cloud_upload</span><span class="font-label-lg text-label-lg">Meal History</span></a><a class="flex items-center gap-space-sm px-space-md h-12 rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-on-surface" data-path="reports" href="#"><span class="material-symbols-outlined text-[22px]">monitoring</span><span class="font-label-lg text-label-lg">Reports</span></a><a class="flex items-center gap-space-sm px-space-md h-12 rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-on-surface" data-path="settings" href="#"><span class="material-symbols-outlined text-[22px]">settings</span><span class="font-label-lg text-label-lg">Settings</span></a></div><div class="p-space-md pb-safe bg-surface-container-low"><div class="flex items-center gap-space-xs"><img alt="Profile" class="w-9 h-9 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfDK9zn2khvr0fDagfCQcEE_F6yEv7A-qnTUI1zlnwCuUPbciPqnNg7F48auBQ6-V2IjkLHmwYrgDZRAgnP6yhAxkylNP0a4x98Vk9clKi4Jnt9C1XfFMjWF-rQ2d3QgCBDsqwuG5T7T66AjNzTsSn9ocgG0gw7E95aThnuGjEfF8baeHL9n21eZWpd6CqC29VNSXXUhH_JNFGaj9SZXV08fdaqxTKlM0tJLXV_HVdFn_JJbwSt5-N9Q"/><div class="flex flex-col min-w-0"><span class="font-label-md text-label-md text-on-surface font-semibold truncate">Elena Rostova</span><span class="font-body-sm text-body-sm text-on-surface-variant truncate">PROVIDER ADMIN</span></div></div></div></aside><main class="flex-1 flex flex-col relative w-full pt-16 pb-24 px-margin bg-surface"><div class="flex flex-col w-full gap-space-lg">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm">
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<h1 class="font-headline-xl-mobile text-headline-xl-mobile text-on-surface font-bold tracking-tight">Subscriptions</h1>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-primary font-label-sm text-label-sm font-semibold">420 Total</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">Manage active and historical meal plans.</p>
+</div>
+<button class="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-primary-container text-on-primary font-label-lg text-label-lg shadow-sm hover:opacity-95 active:scale-[0.98] transition-all" onclick="document.getElementById('new-sub-modal').classList.remove('hidden'); document.body.classList.add('overflow-hidden');" type="button">
+<span class="material-symbols-outlined text-[20px]">add_circle</span>
+<span>+ New Subscription</span>
+</button>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-space-xs p-1 rounded-xl bg-surface-container-low shadow-sm">
+<button class="flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg bg-surface-container-lowest text-primary shadow-sm font-label-md text-label-md font-bold transition-all" type="button">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span>Active</span>
+<span class="px-1.5 py-0.2 rounded-full bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm">346</span>
+</button>
+<button class="flex items-center justify-center gap-1 py-2 px-3 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container font-label-md text-label-md font-medium transition-all" type="button">
+<span>All</span>
+<span class="text-on-surface-variant/70 font-label-sm text-label-sm">420</span>
+</button>
+<button class="flex items-center justify-center gap-1 py-2 px-3 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container font-label-md text-label-md font-medium transition-all" type="button">
+<span>Expired</span>
+<span class="text-on-surface-variant/70 font-label-sm text-label-sm">58</span>
+</button>
+<button class="flex items-center justify-center gap-1 py-2 px-3 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container font-label-md text-label-md font-medium transition-all" type="button">
+<span>Cancelled</span>
+<span class="text-on-surface-variant/70 font-label-sm text-label-sm">16</span>
+</button>
+</div>
+<div class="flex items-center justify-between px-1">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider font-semibold">Priority Counter Manifest</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Sort by:</span>
+<span class="font-label-sm text-label-sm text-primary font-bold">Balance Urgency</span>
+</div>
+</div>
+<div class="flex flex-col gap-space-md">
+<div class="flex flex-col gap-space-sm p-space-md rounded-xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="relative">
+<img class="w-11 h-11 rounded-full object-cover" data-alt="Portrait photo of Marcus Vance, customer #4827 with short dark hair in a casual slate knit sweater, warm studio lighting with soft indigo gradient background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCd_MPjymbOFePdEz5Y1Sf4WVhNGyM7o-wFMh62R9pa9cpW2XUlFxUvgGkYf0ILk3EK8r8g6Isa5ZlBDCSEbNldbjvugSpBmG8hm3ElgPy7Y0cGXMbyLRhHGk5jkJqRnRatgl9U-ax78qBj4gFJE0BzNr--gv2LwzSAA4OrHyX4eI-YBYLemCwz1QNqktbDDoClSVBvyskI14u2f7CKnQyV_jBeRUMAvLbu-NpY2hpOt7moXhppX2OvbQ"/>
+<span class="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 rounded-full bg-tertiary-fixed-dim ring-2 ring-surface-container-lowest flex items-center justify-center">
+<span class="material-symbols-outlined text-[10px] text-tertiary">priority_high</span>
+</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5 flex-wrap">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold truncate">Marcus Vance</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container text-on-surface-variant font-label-sm text-label-sm font-semibold">#4827</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-primary">bento</span>
+              Standard Lunch (30 Meals)
+            </span>
+</div>
+</div>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm font-bold flex-shrink-0">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary animate-ping"></span>
+          Low Balance
+        </span>
+</div>
+<div class="flex flex-col gap-1.5 pt-1">
+<div class="flex items-center justify-between text-on-surface-variant font-label-md text-label-md">
+<span class="flex items-center gap-1 font-semibold text-on-surface">
+<span class="material-symbols-outlined text-[16px] text-tertiary">warning</span>
+            1 meal remaining
+          </span>
+<span>29 / 30 consumed (97%)</span>
+</div>
+<div class="w-full h-2.5 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full bg-tertiary-container rounded-full transition-all duration-500" style="width: 97%;"></div>
+</div>
+</div>
+<div class="flex items-center justify-between pt-1 text-on-surface-variant font-body-sm text-body-sm">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">calendar_today</span>
+<span>Oct 01, 2024 – Oct 31, 2024</span>
+</div>
+<span class="font-label-sm text-label-sm text-tertiary font-bold">Auto-topup Paused</span>
+</div>
+<div class="grid grid-cols-2 gap-2 pt-2">
+<button class="w-full py-2 px-3 rounded-lg bg-surface-container text-on-surface hover:bg-surface-container-high font-label-md text-label-md font-semibold text-center transition-colors" type="button">
+          View Details
+        </button>
+<button class="w-full py-2 px-3 rounded-lg bg-primary-container text-on-primary font-label-md text-label-md font-semibold text-center hover:opacity-95 shadow-sm transition-all flex items-center justify-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[16px]">restart_alt</span>
+<span>Renew Plan</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col gap-space-sm p-space-md rounded-xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm min-w-0">
+<img class="w-11 h-11 rounded-full object-cover" data-alt="Corporate headshot profile photo of Priya Patel with long black hair, bright professional kitchen studio background with emerald green chef aprons visible" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBL4ImNe3HTTpVftm3e-q0SgCXi1Prz3HmeQfLKwX9iNeH3HGfl_97ZPcAM-fDiwD-RmKrntQKa2BX0qRtddkSLTpJNOjaIWJ2qmpm1M62XF9d7yPscnOAop-YA7yxA2Bvgpguyd0cEkKBczd8a1PU54vBPiAqkNvl96NC1kIwsSpg9IW-MRfMd5c35ErjkhzzlbDg6crp5_fiVKygcUu0UFE80KrPXZIx1ZdhWB0uKf-V_Ewi9uXkrog"/>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5 flex-wrap">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold truncate">Priya Patel</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container text-on-surface-variant font-label-sm text-label-sm font-semibold">#1042</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-primary">dinner_dining</span>
+              Executive Thali (60 Meals)
+            </span>
+</div>
+</div>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm font-bold flex-shrink-0">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+          Active
+        </span>
+</div>
+<div class="flex flex-col gap-1.5 pt-1">
+<div class="flex items-center justify-between text-on-surface-variant font-label-md text-label-md">
+<span class="font-semibold text-on-surface">24 meals remaining</span>
+<span>36 / 60 consumed (60%)</span>
+</div>
+<div class="w-full h-2.5 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full bg-primary-container rounded-full transition-all duration-500" style="width: 60%;"></div>
+</div>
+</div>
+<div class="flex items-center justify-between pt-1 text-on-surface-variant font-body-sm text-body-sm">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">calendar_today</span>
+<span>Sep 15, 2024 – Nov 15, 2024</span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary font-bold">Weekly Delivery Active</span>
+</div>
+<div class="pt-2">
+<button class="w-full py-2 px-3 rounded-lg bg-surface-container text-on-surface hover:bg-surface-container-high font-label-md text-label-md font-semibold text-center transition-colors flex items-center justify-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[16px]">settings</span>
+<span>Manage Plan</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col gap-space-sm p-space-md rounded-xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm min-w-0">
+<img class="w-11 h-11 rounded-full object-cover" data-alt="Portrait of Liam O Connor wearing glasses and denim shirt, high key modern loft kitchen lighting background with clean slate surfaces" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvu19I94jMeLrfiy6-R1WV3GJdvmXRG_06mIThqFL3OgOc1Sj5qGjqNdRa45GPNA0oWGNwV918MoJhSLKNDFglK4kLFLHfLkbb1WKsUJ2NB9wuwEc46AryBYHfSsikNeBawRadDCoBPPL5FD0e7EDapVTxayVji1Mr9IbD_XlsU3O4T_vV9fEE0LhjfWdOtqgSLJK6FVDQGdBMZgaTdfdf5l02qqYHvmsT1J16Pyv4zaRuinksruECYg"/>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5 flex-wrap">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold truncate">Liam O'Connor</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container text-on-surface-variant font-label-sm text-label-sm font-semibold">#2190</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-primary">takeout_dining</span>
+              Monthly Dinner Box (30 Meals)
+            </span>
+</div>
+</div>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm font-bold flex-shrink-0">
+<span class="material-symbols-outlined text-[14px]">hourglass_top</span>
+          Expiring Soon
+        </span>
+</div>
+<div class="flex flex-col gap-1.5 pt-1">
+<div class="flex items-center justify-between text-on-surface-variant font-label-md text-label-md">
+<span class="font-semibold text-on-surface">8 meals remaining</span>
+<span>22 / 30 consumed (73%)</span>
+</div>
+<div class="w-full h-2.5 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full bg-primary-container rounded-full transition-all duration-500" style="width: 73%;"></div>
+</div>
+</div>
+<div class="flex items-center justify-between pt-1 text-on-surface-variant font-body-sm text-body-sm">
+<div class="flex items-center gap-1 text-tertiary font-semibold">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+<span>Expires in 4 days (Oct 28, 2024)</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Diet: Low-Sodium</span>
+</div>
+<div class="pt-2">
+<button class="w-full py-2 px-3 rounded-lg bg-primary-container text-on-primary font-label-md text-label-md font-semibold text-center hover:opacity-95 shadow-sm transition-all flex items-center justify-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[16px]">autorenew</span>
+<span>Renew Plan</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col gap-space-sm p-space-md rounded-xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm min-w-0">
+<img class="w-11 h-11 rounded-full object-cover" data-alt="Headshot of David Kim in navy blue polo against modern bright cafeteria setting with stainless steel kitchen pass background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDy6s2GbWdUze5uMmlf4IRXIshXF9KT-7psG8nbKDNBC7sjLld2QZgA_OJvFLVt9SReXZCEe2MT5QMly4ttYYh1325tBDRpZOiEL5im2u5QfcqI9RgCliJxYlFvi8MfYMwUyLTYgejZSNgPpuE7cOzu0ZtBH6uk_L627Abm6tSYO69ka-O0Cb3OU1Nky80-Z8cANK5yXKVTsGncg2hVYXUZ962GzAWtMenLpI-4Dthz-yLGQFUsgYCo8g"/>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5 flex-wrap">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold truncate">David Kim</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container text-on-surface-variant font-label-sm text-label-sm font-semibold">#2904</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-primary">lunch_dining</span>
+              Express Tiffin (20 Meals)
+            </span>
+</div>
+</div>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm font-bold flex-shrink-0">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+          Active
+        </span>
+</div>
+<div class="flex flex-col gap-1.5 pt-1">
+<div class="flex items-center justify-between text-on-surface-variant font-label-md text-label-md">
+<span class="font-semibold text-on-surface">15 meals remaining</span>
+<span>5 / 20 consumed (25%)</span>
+</div>
+<div class="w-full h-2.5 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full bg-primary-container rounded-full transition-all duration-500" style="width: 25%;"></div>
+</div>
+</div>
+<div class="flex items-center justify-between pt-1 text-on-surface-variant font-body-sm text-body-sm">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">calendar_today</span>
+<span>Oct 10, 2024 – Nov 10, 2024</span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary font-bold">Standard Tier</span>
+</div>
+<div class="grid grid-cols-2 gap-2 pt-2">
+<button class="w-full py-2 px-3 rounded-lg bg-surface-container text-on-surface hover:bg-surface-container-high font-label-md text-label-md font-semibold text-center transition-colors" type="button">
+          View Details
+        </button>
+<button class="w-full py-2 px-3 rounded-lg bg-surface-container-high text-primary hover:bg-surface-container font-label-md text-label-md font-semibold text-center transition-colors flex items-center justify-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px]">edit_note</span>
+<span>Modify</span>
+</button>
+</div>
+</div>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-low flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase font-semibold">Kitchen Batch Capacity</span>
+<span class="font-label-md text-label-md text-primary font-bold">84% Utilitized</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container-highest overflow-hidden">
+<div class="h-full bg-primary-container rounded-full" style="width: 84%;"></div>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm pt-1">
+<span>Active Subscribers: 346</span>
+<span>Daily Meal Run: 692 boxes</span>
+</div>
+</div>
+<div class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-inverse-surface/40 backdrop-blur-sm transition-opacity" id="new-sub-modal">
+<div class="relative w-full max-w-lg bg-surface-container-lowest rounded-2xl shadow-2xl p-space-lg flex flex-col gap-space-md max-h-[795px] overflow-y-auto">
+<div class="flex items-center justify-between pb-2">
+<div class="flex flex-col">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface font-bold">New Subscription</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Assign meal plan and setup counter billing status.</p>
+</div>
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container transition-colors" onclick="document.getElementById('new-sub-modal').classList.add('hidden'); document.body.classList.remove('overflow-hidden');" type="button">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div class="flex flex-col gap-space-sm">
+<label class="flex flex-col gap-1">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Select Customer</span>
+<div class="relative">
+<input class="w-full h-11 pl-10 pr-4 rounded-xl bg-surface-container-low text-on-surface font-body-md text-body-md focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary-container" type="text" value="Marcus Vance (#4827)"/>
+<span class="material-symbols-outlined absolute left-3 top-3 text-[20px] text-on-surface-variant">person_search</span>
+</div>
+</label>
+<label class="flex flex-col gap-1">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Choose Plan Template</span>
+<div class="relative">
+<select class="w-full h-11 pl-10 pr-8 rounded-xl bg-surface-container-low text-on-surface font-body-md text-body-md appearance-none focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary-container">
+<option selected="">Standard Lunch (30-Day Plan)</option>
+<option>Executive Thali (60-Day Plan)</option>
+<option>Weekly Tiffin Express (14-Day Plan)</option>
+<option>Custom Kitchen Pass</option>
+</select>
+<span class="material-symbols-outlined absolute left-3 top-3 text-[20px] text-on-surface-variant">restaurant_menu</span>
+<span class="material-symbols-outlined absolute right-3 top-3 text-[20px] text-on-surface-variant pointer-events-none">arrow_drop_down</span>
+</div>
+</label>
+<div class="grid grid-cols-2 gap-space-sm">
+<label class="flex flex-col gap-1">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Total Meals Quota</span>
+<div class="relative">
+<input class="w-full h-11 pl-9 pr-3 rounded-xl bg-surface-container-low text-on-surface font-body-md text-body-md focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary-container" type="number" value="30"/>
+<span class="material-symbols-outlined absolute left-3 top-3 text-[18px] text-on-surface-variant">pin</span>
+</div>
+</label>
+<label class="flex flex-col gap-1">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Daily Meal Limit</span>
+<input class="w-full h-11 px-3 rounded-xl bg-surface-container-low text-on-surface font-body-md text-body-md focus:outline-none" type="number" value="1"/>
+</label>
+</div>
+<div class="grid grid-cols-2 gap-space-sm">
+<label class="flex flex-col gap-1">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Start Date</span>
+<div class="relative">
+<input class="w-full h-11 px-3 rounded-xl bg-surface-container-low text-on-surface font-body-md text-body-md focus:outline-none" type="date" value="2024-11-01"/>
+</div>
+</label>
+<label class="flex flex-col gap-1">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Expiration Date</span>
+<div class="relative">
+<input class="w-full h-11 px-3 rounded-xl bg-surface-container-low text-on-surface font-body-md text-body-md focus:outline-none" type="date" value="2024-11-30"/>
+</div>
+</label>
+</div>
+<div class="flex flex-col gap-1.5 pt-1">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Payment Status</span>
+<div class="grid grid-cols-2 gap-2">
+<button class="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-secondary-fixed text-on-secondary-fixed font-label-md text-label-md font-bold shadow-sm" onclick="this.parentElement.children[0].className='flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-secondary-fixed text-on-secondary-fixed font-label-md text-label-md font-bold shadow-sm'; this.parentElement.children[1].className='flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-surface-container-low text-on-surface-variant font-label-md text-label-md font-medium';" type="button">
+<span class="material-symbols-outlined text-[18px]">check_circle</span>
+<span>Mark as Paid</span>
+</button>
+<button class="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-surface-container-low text-on-surface-variant font-label-md text-label-md font-medium" onclick="this.parentElement.children[1].className='flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-tertiary-fixed text-on-tertiary-fixed font-label-md text-label-md font-bold shadow-sm'; this.parentElement.children[0].className='flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-surface-container-low text-on-surface-variant font-label-md text-label-md font-medium';" type="button">
+<span class="material-symbols-outlined text-[18px]">pending</span>
+<span>Pending Ingest</span>
+</button>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-3 pt-4">
+<button class="w-full py-3 px-4 rounded-xl bg-surface-container text-on-surface font-label-lg text-label-lg font-semibold hover:bg-surface-container-high transition-colors" onclick="document.getElementById('new-sub-modal').classList.add('hidden'); document.body.classList.remove('overflow-hidden');" type="button">
+          Cancel
+        </button>
+<button class="w-full py-3 px-4 rounded-xl bg-primary-container text-on-primary font-label-lg text-label-lg font-semibold hover:opacity-95 shadow-md transition-all flex items-center justify-center gap-1" onclick="document.getElementById('new-sub-modal').classList.add('hidden'); document.body.classList.remove('overflow-hidden');" type="button">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+<span>Create Plan</span>
+</button>
+</div>
+</div>
+</div>
+</div></main><nav class="fixed bottom-0 inset-x-0 z-40 bg-surface/90 backdrop-blur-xl pb-safe shadow-[0_-1px_10px_rgba(0,0,0,0.05)]" data-active-classes="text-primary font-bold"><div class="flex justify-around items-center h-16 px-space-xs"><a class="flex flex-col items-center justify-center min-w-[56px] h-12 gap-0.5 text-on-surface-variant hover:text-on-surface transition-colors" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[22px]">dashboard</span><span class="font-label-sm text-label-sm">Dashboard</span></a><a class="flex flex-col items-center justify-center min-w-[56px] h-12 gap-0.5 text-on-surface-variant hover:text-on-surface transition-colors" data-path="customers" href="#"><span class="material-symbols-outlined text-[22px]">groups</span><span class="font-label-sm text-label-sm">Customers</span></a><a class="relative flex flex-col items-center justify-center -top-3" data-path="meal-counter" href="#"><div class="w-13 h-13 p-3 rounded-full bg-primary-container text-on-primary shadow-lg shadow-primary/30 flex items-center justify-center"><span class="material-symbols-outlined text-[26px]">qr_code_scanner</span></div><span class="font-label-sm text-label-sm text-primary font-bold mt-1">Dispatch</span></a><a aria-current="page" class="flex flex-col items-center justify-center min-w-[56px] h-12 gap-0.5 transition-colors text-primary font-bold" data-path="subscriptions" href="#"><span class="material-symbols-outlined text-[22px]">card_membership</span><span class="font-label-sm text-label-sm">Plans</span></a><a class="flex flex-col items-center justify-center min-w-[56px] h-12 gap-0.5 text-on-surface-variant hover:text-on-surface transition-colors" data-path="reports" href="#"><span class="material-symbols-outlined text-[22px]">bar_chart</span><span class="font-label-sm text-label-sm">Reports</span></a></div></nav></body></html>

@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><title>Meal Counter - MealTrack</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "secondary-fixed-dim": "#4edea3", "inverse-surface": "#283044", "surface-container-highest": "#dae2fd", "surface-container-high": "#e2e7ff", "tertiary": "#684000", "on-primary-fixed-variant": "#3323cc", "surface-container": "#eaedff", "secondary": "#006c49", "error": "#ba1a1a", "on-tertiary-fixed": "#2a1700", "tertiary-container": "#885500", "on-tertiary": "#ffffff", "on-primary-container": "#dad7ff", "on-secondary-fixed-variant": "#005236", "surface": "#faf8ff", "inverse-on-surface": "#eef0ff", "on-secondary-container": "#00714d", "secondary-container": "#6cf8bb", "primary": "#3525cd", "on-error-container": "#93000a", "outline-variant": "#c7c4d8", "surface-dim": "#d2d9f4", "on-surface-variant": "#464555", "on-tertiary-container": "#ffd4a4", "on-primary-fixed": "#0f0069", "surface-variant": "#dae2fd", "on-secondary": "#ffffff", "tertiary-fixed-dim": "#ffb95f", "primary-fixed-dim": "#c3c0ff", "on-primary": "#ffffff", "on-secondary-fixed": "#002113", "outline": "#777587", "background": "#faf8ff", "primary-fixed": "#e2dfff", "secondary-fixed": "#6ffbbe", "on-surface": "#131b2e", "on-error": "#ffffff", "tertiary-fixed": "#ffddb8", "surface-container-low": "#f2f3ff", "primary-container": "#4f46e5", "surface-container-lowest": "#ffffff", "inverse-primary": "#c3c0ff", "error-container": "#ffdad6", "surface-tint": "#4d44e3", "surface-bright": "#faf8ff", "on-background": "#131b2e", "on-tertiary-fixed-variant": "#653e00" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": { "margin": "1rem", "margin-desktop": "2rem", "gutter": "1rem", "space-xs": "0.25rem", "gutter-desktop": "1.5rem", "space-sm": "0.5rem", "space-lg": "1.5rem", "gutter-tablet": "1.25rem", "space-md": "1rem", "margin-tablet": "1.5rem", "space-xl": "2rem" }, "fontFamily": { "body-lg": ["Inter"], "headline-xl": ["Plus Jakarta Sans"], "headline-sm": ["Plus Jakarta Sans"], "headline-md": ["Plus Jakarta Sans"], "data-metric": ["Plus Jakarta Sans"], "label-md": ["Inter"], "headline-lg-mobile": ["Plus Jakarta Sans"], "headline-xl-mobile": ["Plus Jakarta Sans"], "body-md": ["Inter"], "headline-lg": ["Plus Jakarta Sans"], "body-sm": ["Inter"], "label-lg": ["Inter"], "label-sm": ["Inter"] }, "fontSize": { "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}], "headline-xl": ["32px", {"lineHeight": "40px", "fontWeight": "700"}], "headline-sm": ["16px", {"lineHeight": "22px", "fontWeight": "600"}], "headline-md": ["18px", {"lineHeight": "24px", "fontWeight": "600"}], "data-metric": ["28px", {"lineHeight": "32px", "fontWeight": "700"}], "label-md": ["12px", {"lineHeight": "16px", "fontWeight": "500"}], "headline-lg-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "600"}], "headline-xl-mobile": ["26px", {"lineHeight": "34px", "fontWeight": "700"}], "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}], "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "600"}], "body-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}], "label-lg": ["14px", {"lineHeight": "20px", "fontWeight": "600"}], "label-sm": ["11px", {"lineHeight": "14px", "letterSpacing": "0.05em", "fontWeight": "600"}] } } } };</script><style>@layer base{html,body{width:100%;margin:0;padding:0;background-color:#faf8ff;}.pb-safe{padding-bottom:calc(env(safe-area-inset-bottom, 0px) + 0.5rem);}.pt-safe{padding-top:env(safe-area-inset-top, 0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}input,button,a{-webkit-tap-highlight-color:transparent;}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="min-h-full bg-surface text-on-surface flex flex-col font-body-md text-body-md"><header class="fixed top-0 inset-x-0 z-50 bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] pt-safe"><div class="h-16 px-gutter flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-xs min-w-0"><button class="w-11 h-11 flex items-center justify-center rounded-xl hover:bg-surface-container text-on-surface transition-colors" onclick="history.back()" type="button"><span class="material-symbols-outlined text-[24px]">arrow_back</span></button><img alt="MealTrack Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WKMcyzS2fXMBJjoDT2fuRc4X320g_bpLK9T7-VC1PChSnNayf47RhvX6Fjkm7fOxZ75iXN7HMCTkr1FXWB2zUskpn3EC2AJBbpD_dXI19hEV2SxZi-X2dyVb33Dv3RNNigGl_16-1AfGOBFCyES7dCymwSAi7b55h4mPtMx8NnFM8-fbpfxMWb6_hkrtCCkXHSKyScf2XLoLVFJ_jJqa0SukJL7DIHfDawEZtzzcmBF883882595IZYyE"/><h1 class="font-headline-sm text-headline-sm text-on-surface truncate font-bold">Meal Counter</h1></div><div class="flex items-center gap-space-xs flex-shrink-0"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfDK9zn2khvr0fDagfCQcEE_F6yEv7A-qnTUI1zlnwCuUPbciPqnNg7F48auBQ6-V2IjkLHmwYrgDZRAgnP6yhAxkylNP0a4x98Vk9clKi4Jnt9C1XfFMjWF-rQ2d3QgCBDsqwuG5T7T66AjNzTsSn9ocgG0gw7E95aThnuGjEfF8baeHL9n21eZWpd6CqC29VNSXXUhH_JNFGaj9SZXV08fdaqxTKlM0tJLXV_HVdFn_JJbwSt5-N9Q"/></div></div></header><main class="flex-1 flex flex-col relative w-full pt-16 pb-safe px-margin bg-surface"><div class="flex flex-col w-full pb-8">
+<!-- Operational Header Status Panel -->
+<div class="flex flex-col gap-space-sm mb-space-md">
+<div class="flex items-center justify-between gap-space-xs">
+<div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Quickly record today's meals.</p>
+</div>
+<!-- Shift Status Badge -->
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm shadow-sm">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+        Counter Ready • Shift Active
+      </span>
+</div>
+<!-- Quick Audio & Auto-focus Toggles -->
+<div class="flex items-center gap-space-xs overflow-x-auto py-1">
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-surface-container-high text-on-surface font-label-md text-label-md transition-colors active:scale-95 shadow-sm" id="toggle-sound" type="button">
+<span class="material-symbols-outlined text-[16px] text-primary" id="sound-icon">volume_up</span>
+<span id="sound-label">Sound Feedback: ON</span>
+</button>
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-surface-container-high text-on-surface font-label-md text-label-md transition-colors active:scale-95 shadow-sm" id="toggle-autofocus" type="button">
+<span class="material-symbols-outlined text-[16px] text-primary">center_focus_strong</span>
+<span>Auto-focus: ON</span>
+</button>
+<div class="ml-auto flex items-center gap-1 text-on-surface-variant font-label-sm text-label-sm px-2">
+<span class="material-symbols-outlined text-[14px]">bolt</span> Lunch Peak
+      </div>
+</div>
+</div>
+<!-- Primary Operational Interaction Card -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-md mb-space-lg flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-wider font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">badge</span>
+        ENTER 4-DIGIT MEMBER ID
+      </span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Press Enter or Tap Search</span>
+</div>
+<!-- Active ID Display Box -->
+<div class="flex items-center justify-between bg-surface-container px-space-md py-3 rounded-xl shadow-inner">
+<div class="flex items-baseline gap-2 min-w-0">
+<span class="font-label-md text-label-md text-on-surface-variant">ID:</span>
+<span class="font-headline-xl-mobile text-headline-xl-mobile tracking-widest text-on-surface font-bold font-mono" id="member-id-display">4827</span>
+<span class="inline-block w-2.5 h-6 bg-primary animate-pulse rounded-sm ml-1"></span>
+</div>
+<div class="flex items-center gap-space-xs">
+<button class="h-9 px-3 rounded-lg bg-surface-variant text-on-surface-variant hover:bg-surface-dim font-label-md text-label-md transition-all active:scale-95 shadow-sm" id="btn-clear" type="button">
+          Clear
+        </button>
+<button class="h-9 px-4 rounded-lg bg-primary text-on-primary font-label-md text-label-md shadow-md hover:bg-primary-container transition-all active:scale-95 flex items-center gap-1" id="btn-lookup" type="button">
+<span class="material-symbols-outlined text-[18px]">search</span>
+          Lookup
+        </button>
+</div>
+</div>
+<!-- High-Speed Touch Numpad (Tablet/Mobile Counter Operations) -->
+<div class="grid grid-cols-3 gap-space-xs">
+<button class="h-12 rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface font-headline-sm text-headline-sm font-bold flex items-center justify-center shadow-sm active:scale-95 transition-all select-none" onclick="handleNumPress('1')" type="button">1</button>
+<button class="h-12 rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface font-headline-sm text-headline-sm font-bold flex items-center justify-center shadow-sm active:scale-95 transition-all select-none" onclick="handleNumPress('2')" type="button">2</button>
+<button class="h-12 rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface font-headline-sm text-headline-sm font-bold flex items-center justify-center shadow-sm active:scale-95 transition-all select-none" onclick="handleNumPress('3')" type="button">3</button>
+<button class="h-12 rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface font-headline-sm text-headline-sm font-bold flex items-center justify-center shadow-sm active:scale-95 transition-all select-none" onclick="handleNumPress('4')" type="button">4</button>
+<button class="h-12 rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface font-headline-sm text-headline-sm font-bold flex items-center justify-center shadow-sm active:scale-95 transition-all select-none" onclick="handleNumPress('5')" type="button">5</button>
+<button class="h-12 rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface font-headline-sm text-headline-sm font-bold flex items-center justify-center shadow-sm active:scale-95 transition-all select-none" onclick="handleNumPress('6')" type="button">6</button>
+<button class="h-12 rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface font-headline-sm text-headline-sm font-bold flex items-center justify-center shadow-sm active:scale-95 transition-all select-none" onclick="handleNumPress('7')" type="button">7</button>
+<button class="h-12 rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface font-headline-sm text-headline-sm font-bold flex items-center justify-center shadow-sm active:scale-95 transition-all select-none" onclick="handleNumPress('8')" type="button">8</button>
+<button class="h-12 rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface font-headline-sm text-headline-sm font-bold flex items-center justify-center shadow-sm active:scale-95 transition-all select-none" onclick="handleNumPress('9')" type="button">9</button>
+<button class="h-12 rounded-xl bg-surface-variant hover:bg-surface-dim text-on-surface-variant font-label-lg text-label-lg flex items-center justify-center shadow-sm active:scale-95 transition-all select-none" onclick="handleNumPress('C')" type="button">
+<span class="material-symbols-outlined text-[20px]">backspace</span>
+</button>
+<button class="h-12 rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface font-headline-sm text-headline-sm font-bold flex items-center justify-center shadow-sm active:scale-95 transition-all select-none" onclick="handleNumPress('0')" type="button">0</button>
+<button class="h-12 rounded-xl bg-primary text-on-primary font-headline-sm text-headline-sm flex items-center justify-center shadow-md active:scale-95 transition-all select-none" onclick="simulateLookup()" type="button">
+<span class="material-symbols-outlined text-[24px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Customer Information Card (Found State for #4827) -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-xl mb-space-lg transition-all duration-300" id="customer-card">
+<div class="flex items-start justify-between gap-space-sm mb-space-sm">
+<div class="flex items-center gap-3 min-w-0">
+<div class="relative w-14 h-14 rounded-xl overflow-hidden bg-surface-container-highest shadow-sm flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Close up realistic portrait photo of Marcus Vance, a polite corporate professional with glasses smiling in high key studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxTjBskht5RotYXnIV6U_ZEeqteX5e3AgAP7o4Ag_vnuokdMMLGKPE3hG6zIrGyibSZHeU3BJ6theedF-19LljlOwMgLsZu1uiFow_p5fALB-dh2ej3lIGYCfNpdTMIQgr4IWHNr89JsjgFKA0tnR_HwjhpqIjrAhNa4Bl6l9gz31mlBGaD8Adc9q8NfZ-8EwTYJrciqQXQr5exseV-hjz0D9KiGemjDEiWrx2Z_MyJQP6tskIdD5Eew"/>
+</div>
+<div class="min-w-0">
+<div class="flex items-center gap-2">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface font-bold truncate">Marcus Vance</h2>
+<span class="px-2 py-0.5 rounded-lg bg-surface-container-high text-on-surface font-label-sm text-label-sm font-mono">#4827</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant truncate">Standard Lunch (30 Meals Plan)</p>
+</div>
+</div>
+<!-- Expiry Mini Pill -->
+<div class="text-right flex-shrink-0">
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Expires</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold">Oct 31, 2024</span>
+</div>
+</div>
+<!-- Critical Operational Alerts Row -->
+<div class="grid grid-cols-2 gap-space-xs mb-space-md">
+<!-- Remaining Meals Alert -->
+<div class="bg-tertiary-fixed rounded-xl p-2.5 flex flex-col justify-between shadow-sm">
+<div class="flex items-center gap-1 text-on-tertiary-fixed">
+<span class="material-symbols-outlined text-[16px] text-tertiary-container">warning</span>
+<span class="font-label-sm text-label-sm font-bold uppercase">Low Balance Warning</span>
+</div>
+<p class="font-headline-sm text-headline-sm text-on-tertiary-fixed font-bold tracking-tight mt-1">1 MEAL REMAINING</p>
+</div>
+<!-- High Visibility Dietary Tag -->
+<div class="bg-error-container rounded-xl p-2.5 flex flex-col justify-between shadow-sm">
+<div class="flex items-center gap-1 text-on-error-container">
+<span class="material-symbols-outlined text-[16px]">restaurant</span>
+<span class="font-label-sm text-label-sm font-bold uppercase">Dietary Caution</span>
+</div>
+<p class="font-label-lg text-label-lg text-on-error-container font-bold truncate mt-1">No Peanuts / Gluten Free</p>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="flex flex-col gap-space-xs">
+<!-- Massive Primary Confirmation Action (56px) -->
+<button class="w-full h-14 rounded-xl bg-secondary text-on-secondary font-headline-sm text-headline-sm font-bold flex items-center justify-center gap-2 shadow-lg hover:bg-secondary/95 active:scale-[0.98] transition-all" id="btn-confirm" onclick="recordMealTransaction()" type="button">
+<span class="material-symbols-outlined text-[28px]">check_circle</span>
+        CONFIRM MEAL (-1)
+      </button>
+<!-- Secondary Action -->
+<button class="w-full h-10 rounded-xl bg-surface-container text-on-surface-variant hover:bg-surface-container-high font-label-md text-label-md font-semibold flex items-center justify-center gap-1.5 transition-colors" onclick="resetCounterInput()" type="button">
+<span class="material-symbols-outlined text-[18px]">person_off</span>
+        Cancel / Wrong Customer
+      </button>
+</div>
+</div>
+<!-- Verification Flash Notification Banner (Hidden by default) -->
+<div class="hidden rounded-xl bg-secondary-container text-on-secondary-container p-space-md mb-space-lg shadow-md items-center justify-between transition-all" id="confirmation-toast">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-secondary text-on-secondary flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[24px]">verified</span>
+</div>
+<div>
+<p class="font-headline-sm text-headline-sm font-bold">Meal Dispensed Successfully!</p>
+<p class="font-body-sm text-body-sm text-on-secondary-variant">Marcus Vance (#4827) • Balance: 0 remaining</p>
+</div>
+</div>
+<span class="font-label-sm text-label-sm uppercase font-mono text-on-secondary-container">JUST NOW</span>
+</div>
+<!-- Today's Meal Log Section -->
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">Today's Meal Log</h3>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm font-mono">142 Recorded</span>
+</div>
+<div class="flex items-center gap-1 text-primary font-label-sm text-label-sm font-semibold bg-surface-container px-2.5 py-1 rounded-lg">
+<span class="material-symbols-outlined text-[16px]">filter_list</span>
+        Filter: Lunch Shift
+      </div>
+</div>
+<!-- Live Stream Items List -->
+<div class="flex flex-col gap-space-xs" id="meal-log-list">
+<!-- Item 1: Real-time entry placeholder -->
+<div class="bg-surface-container-lowest rounded-xl p-space-sm shadow-sm flex items-center justify-between transition-all">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-10 h-10 rounded-xl overflow-hidden bg-surface-container flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Portrait photo of Marcus Vance corporate employee with tidy short hair in bright cafeteria setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_80fIjn4d8lqu8Pwx5pwv0jNJcj6GP3odIdN1JMnc3WxxwJRzKf9LS7zbdC-pe0F8bw4Qe90S93s0qkkZI7uUvnglslM-g30dLWpzgs-7tgb7Maw4ovbzlHu4PEaGr3gT2pZxK-VBaRjIiF7ASrRV4cp3068CaPM7aYtGlRzqe1MfmwvMmUMs_JOXDI4nxuO52nO6uF0dHIK05QkaixNS1m3AJuiPlyz9XU84rnAuY1pILiO_7LI4fw"/>
+</div>
+<div class="min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-label-md text-label-md text-on-surface font-bold truncate">Marcus Vance</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-mono">#4827</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant truncate">Standard Lunch • 12:44 PM</p>
+</div>
+</div>
+<div class="flex items-center gap-1.5 flex-shrink-0">
+<span class="px-2 py-1 rounded-lg bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">done_all</span>
+            Success (-1)
+          </span>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="bg-surface-container-lowest rounded-xl p-space-sm shadow-sm flex items-center justify-between transition-all">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-10 h-10 rounded-xl overflow-hidden bg-surface-container flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Portrait photo of Priya Patel with cheerful smile wearing professional kitchen mess apron" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXBsYMogOG4DA4-Ke9JN12X0EyuFAWbvesfDbh_6zwrtA-88lSRbxFLpbixEol41f_xU100-0DYgC-87sjgf2CWscHXSON6LnD526K_fcidarTLC6JsXu6tfCFWCHq2uxUShx7pCFvNk4z7uLqRNSU50mtEEQS1F7SrFNV-PKbTXgs20ei_Ef45N8qM7goMvVPnZ9ElXLL0lJPDXlYndTnO2xU8Fay2LWqiyWv8M1SU3UsNZZMWNbjWA"/>
+</div>
+<div class="min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-label-md text-label-md text-on-surface font-bold truncate">Priya Patel</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-mono">#1042</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant truncate">Executive Thali • 12:42 PM</p>
+</div>
+</div>
+<div class="flex items-center gap-1.5 flex-shrink-0">
+<span class="px-2 py-1 rounded-lg bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">done_all</span>
+            Success (-1)
+          </span>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="bg-surface-container-lowest rounded-xl p-space-sm shadow-sm flex items-center justify-between transition-all">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-10 h-10 rounded-xl overflow-hidden bg-surface-container flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Portrait photo of Liam O'Connor in light casual polo sitting at sunny lunchroom table" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCugwLRWBpbA7vbciV3p0MALYkWRWSxYYfWHQYhoZFPpHGWfaQtn5Ipu4Gkfkz_09i4an84wSnKGK0smBxOB1byNdInT5EYvmNm2cJMnerMe86ZK7QhcOXuOqnG3esLNNIKeVOiOdc6SQ9bwQCd8KdxBqY9GprLT_b-MiSymkaPky15xHPN35utVIncTdUwagSBumRqbw_SHNyVK8KC9g806aYrsO4_PWoXRveRoTEHQ5Xr-9Zp7s4TvQ"/>
+</div>
+<div class="min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-label-md text-label-md text-on-surface font-bold truncate">Liam O'Connor</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-mono">#2190</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant truncate">Dinner Box • 12:39 PM</p>
+</div>
+</div>
+<div class="flex items-center gap-1.5 flex-shrink-0">
+<span class="px-2 py-1 rounded-lg bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">done_all</span>
+            Success (-1)
+          </span>
+</div>
+</div>
+</div>
+<!-- Empty State Fallback Block (Demonstrating clean operational shift fallback state) -->
+<div class="hidden rounded-xl bg-surface-container p-space-xl flex flex-col items-center justify-center text-center" id="log-empty-state">
+<div class="w-16 h-16 rounded-full bg-surface-container-highest flex items-center justify-center text-on-surface-variant mb-space-sm shadow-inner">
+<span class="material-symbols-outlined text-[32px]">dinner_dining</span>
+</div>
+<p class="font-headline-sm text-headline-sm text-on-surface font-semibold">No meals recorded yet today</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant max-w-xs mt-1">Start entering customer numbers using the numpad above to log real-time dispatch.</p>
+</div>
+</div>
+</div>
+<script>
+  let currentInput = '4827';
+  let soundEnabled = true;
+
+  function updateDisplay() {
+    const el = document.getElementById('member-id-display');
+    if (el) {
+      el.textContent = currentInput || '----';
+    }
+  }
+
+  function handleNumPress(val) {
+    if (val === 'C') {
+      currentInput = currentInput.slice(0, -1);
+    } else {
+      if (currentInput.length < 4) {
+        currentInput += val;
+      }
+    }
+    updateDisplay();
+    if (currentInput.length === 4) {
+      simulateLookup();
+    }
+  }
+
+  function simulateLookup() {
+    const card = document.getElementById('customer-card');
+    if (card) {
+      card.classList.remove('opacity-40');
+      card.classList.add('scale-[1.01]');
+      setTimeout(() => card.classList.remove('scale-[1.01]'), 150);
+    }
+  }
+
+  function resetCounterInput() {
+    currentInput = '';
+    updateDisplay();
+    const card = document.getElementById('customer-card');
+    if (card) {
+      card.classList.add('opacity-40');
+    }
+  }
+
+  function recordMealTransaction() {
+    const toast = document.getElementById('confirmation-toast');
+    const card = document.getElementById('customer-card');
+    
+    // Trigger positive audible chime if Web Audio is available
+    if (soundEnabled && window.AudioContext) {
+      try {
+        const ctx = new (window.AudioContext || window.webkitAudioContext)();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.frequency.setValueAtTime(587.33, ctx.currentTime); // D5
+        osc.frequency.setValueAtTime(880, ctx.currentTime + 0.1); // A5
+        gain.gain.setValueAtTime(0.2, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.35);
+        osc.start();
+        osc.stop(ctx.currentTime + 0.35);
+      } catch (e) {
+        // Fallback quiet
+      }
+    }
+
+    if (toast) {
+      toast.classList.remove('hidden');
+      toast.classList.add('flex');
+      setTimeout(() => {
+        toast.classList.add('hidden');
+        toast.classList.remove('flex');
+      }, 3500);
+    }
+
+    // Clear after fast confirmation
+    currentInput = '';
+    updateDisplay();
+  }
+
+  document.getElementById('toggle-sound')?.addEventListener('click', () => {
+    soundEnabled = !soundEnabled;
+    const label = document.getElementById('sound-label');
+    const icon = document.getElementById('sound-icon');
+    if (label && icon) {
+      label.textContent = soundEnabled ? 'Sound Feedback: ON' : 'Sound Feedback: OFF';
+      icon.textContent = soundEnabled ? 'volume_up' : 'volume_off';
+    }
+  });
+
+  document.getElementById('btn-clear')?.addEventListener('click', resetCounterInput);
+  document.getElementById('btn-lookup')?.addEventListener('click', simulateLookup);
+
+  // Global rapid key listener for physical keyboards or barcode scanners
+  window.addEventListener('keydown', (e) => {
+    if (e.key >= '0' && e.key <= '9') {
+      handleNumPress(e.key);
+    } else if (e.key === 'Backspace') {
+      handleNumPress('C');
+    } else if (e.key === 'Enter') {
+      if (currentInput.length === 4) {
+        recordMealTransaction();
+      } else {
+        simulateLookup();
+      }
+    }
+  });
+</script></main></body></html>

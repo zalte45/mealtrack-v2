@@ -1,0 +1,21 @@
+node_modules/
+.next/
+.env
+.env.local
+.env.*.local
+
+# Vercel
+.vercel/
+
+# Debug / temporary files
+scratch_*.js
+scratch_*.sql
+
+# OS files
+.DS_Store
+Thumbs.db
+
+*.mkv
+*.mp4
+*.avi
+*.mov

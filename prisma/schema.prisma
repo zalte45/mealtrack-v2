@@ -1,0 +1,184 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+enum Role {
+  OWNER
+  ADMIN
+  STAFF
+}
+
+enum SubscriptionStatus {
+  ACTIVE
+  EXHAUSTED
+  EXPIRED
+  CANCELLED
+  PENDING_START
+}
+
+enum PaymentStatus {
+  PAID
+  PENDING
+  PARTIAL
+}
+
+enum MealRecordStatus {
+  VALID
+  VOIDED
+}
+
+model Provider {
+  id                  String   @id @default(cuid())
+  name                String
+  email               String?
+  phone               String?
+  address             String?
+  lowBalanceThreshold Int      @default(3)
+  chimeEnabled        Boolean  @default(true)
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+
+  users         User[]
+  customers     Customer[]
+  plans         MealPlan[]
+  subscriptions Subscription[]
+  mealRecords   MealRecord[]
+  auditLogs     AuditLog[]
+}
+
+model User {
+  id           String   @id @default(cuid())
+  providerId   String
+  email        String   @unique
+  passwordHash String
+  name         String
+  role         Role     @default(STAFF)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  provider    Provider     @relation(fields: [providerId], references: [id], onDelete: Cascade)
+  mealRecords MealRecord[] @relation("ServedBy")
+  auditLogs   AuditLog[]
+
+  @@index([providerId])
+}
+
+model Customer {
+  id         String   @id @default(cuid())
+  providerId String
+  memberId   Int
+  name       String
+  mobile     String
+  email      String?
+  address    String?
+  notes      String?
+  isArchived Boolean  @default(false)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  provider      Provider       @relation(fields: [providerId], references: [id], onDelete: Cascade)
+  subscriptions Subscription[]
+  mealRecords   MealRecord[]
+
+  @@unique([providerId, memberId])
+  @@index([providerId, name])
+  @@index([providerId, mobile])
+  @@index([providerId, isArchived])
+}
+
+model MealPlan {
+  id               String   @id @default(cuid())
+  providerId       String
+  name             String
+  description      String?
+  quota            Int
+  validityDays     Int
+  price            Float
+  mealsPerDay      Int      @default(1)
+  allowedMealTypes String[] @default(["BREAKFAST", "LUNCH", "DINNER"])
+  isActive         Boolean  @default(true)
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  provider      Provider       @relation(fields: [providerId], references: [id], onDelete: Cascade)
+  subscriptions Subscription[]
+
+  @@index([providerId, isActive])
+}
+
+model Subscription {
+  id               String             @id @default(cuid())
+  providerId       String
+  customerId       String
+  planId           String?
+  planName         String
+  quota            Int
+  validityDays     Int
+  price            Float
+  mealsPerDay      Int                @default(1)
+  allowedMealTypes String[]           @default(["BREAKFAST", "LUNCH", "DINNER"])
+  startDate        DateTime
+  endDate          DateTime
+  paymentStatus    PaymentStatus      @default(PAID)
+  status           SubscriptionStatus @default(ACTIVE)
+  createdAt        DateTime           @default(now())
+  updatedAt        DateTime           @updatedAt
+
+  provider    Provider     @relation(fields: [providerId], references: [id], onDelete: Cascade)
+  customer    Customer     @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  plan        MealPlan?    @relation(fields: [planId], references: [id], onDelete: SetNull)
+  mealRecords MealRecord[]
+
+  @@index([providerId, customerId])
+  @@index([providerId, status])
+  @@index([providerId, startDate, endDate])
+}
+
+model MealRecord {
+  id             String           @id @default(cuid())
+  providerId     String
+  customerId     String
+  subscriptionId String
+  servedById     String?
+  mealType       String           @default("LUNCH")
+  status         MealRecordStatus @default(VALID)
+  idempotencyKey String?          @unique
+  notes          String?
+  voidedAt       DateTime?
+  voidedById     String?
+  voidReason     String?
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+
+  provider     Provider     @relation(fields: [providerId], references: [id], onDelete: Cascade)
+  customer     Customer     @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  subscription Subscription @relation(fields: [subscriptionId], references: [id], onDelete: Cascade)
+  servedBy     User?        @relation("ServedBy", fields: [servedById], references: [id], onDelete: SetNull)
+
+  @@index([providerId, customerId])
+  @@index([providerId, subscriptionId])
+  @@index([providerId, createdAt])
+  @@index([providerId, status])
+  @@index([providerId, status, createdAt])
+}
+
+model AuditLog {
+  id         String   @id @default(cuid())
+  providerId String
+  userId     String?
+  action     String
+  details    String
+  ipAddress  String?
+  createdAt  DateTime @default(now())
+
+  provider Provider @relation(fields: [providerId], references: [id], onDelete: Cascade)
+  user     User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([providerId, createdAt])
+}

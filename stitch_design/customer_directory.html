@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><title>MealTrack Admin</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "secondary-fixed-dim": "#4edea3", "inverse-surface": "#283044", "surface-container-highest": "#dae2fd", "surface-container-high": "#e2e7ff", "tertiary": "#684000", "on-primary-fixed-variant": "#3323cc", "surface-container": "#eaedff", "secondary": "#006c49", "error": "#ba1a1a", "on-tertiary-fixed": "#2a1700", "tertiary-container": "#885500", "on-tertiary": "#ffffff", "on-primary-container": "#dad7ff", "on-secondary-fixed-variant": "#005236", "surface": "#faf8ff", "inverse-on-surface": "#eef0ff", "on-secondary-container": "#00714d", "secondary-container": "#6cf8bb", "primary": "#3525cd", "on-error-container": "#93000a", "outline-variant": "#c7c4d8", "surface-dim": "#d2d9f4", "on-surface-variant": "#464555", "on-tertiary-container": "#ffd4a4", "on-primary-fixed": "#0f0069", "surface-variant": "#dae2fd", "on-secondary": "#ffffff", "tertiary-fixed-dim": "#ffb95f", "primary-fixed-dim": "#c3c0ff", "on-primary": "#ffffff", "on-secondary-fixed": "#002113", "outline": "#777587", "background": "#faf8ff", "primary-fixed": "#e2dfff", "secondary-fixed": "#6ffbbe", "on-surface": "#131b2e", "on-error": "#ffffff", "tertiary-fixed": "#ffddb8", "surface-container-low": "#f2f3ff", "primary-container": "#4f46e5", "surface-container-lowest": "#ffffff", "inverse-primary": "#c3c0ff", "error-container": "#ffdad6", "surface-tint": "#4d44e3", "surface-bright": "#faf8ff", "on-background": "#131b2e", "on-tertiary-fixed-variant": "#653e00" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": { "margin": "1rem", "margin-desktop": "2rem", "gutter": "1rem", "space-xs": "0.25rem", "gutter-desktop": "1.5rem", "space-sm": "0.5rem", "space-lg": "1.5rem", "gutter-tablet": "1.25rem", "space-md": "1rem", "margin-tablet": "1.5rem", "space-xl": "2rem" }, "fontFamily": { "body-lg": ["Inter"], "headline-xl": ["Plus Jakarta Sans"], "headline-sm": ["Plus Jakarta Sans"], "headline-md": ["Plus Jakarta Sans"], "data-metric": ["Plus Jakarta Sans"], "label-md": ["Inter"], "headline-lg-mobile": ["Plus Jakarta Sans"], "headline-xl-mobile": ["Plus Jakarta Sans"], "body-md": ["Inter"], "headline-lg": ["Plus Jakarta Sans"], "body-sm": ["Inter"], "label-lg": ["Inter"], "label-sm": ["Inter"] }, "fontSize": { "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}], "headline-xl": ["32px", {"lineHeight": "40px", "fontWeight": "700"}], "headline-sm": ["16px", {"lineHeight": "22px", "fontWeight": "600"}], "headline-md": ["18px", {"lineHeight": "24px", "fontWeight": "600"}], "data-metric": ["28px", {"lineHeight": "32px", "fontWeight": "700"}], "label-md": ["12px", {"lineHeight": "16px", "fontWeight": "500"}], "headline-lg-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "600"}], "headline-xl-mobile": ["26px", {"lineHeight": "34px", "fontWeight": "700"}], "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}], "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "600"}], "body-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}], "label-lg": ["14px", {"lineHeight": "20px", "fontWeight": "600"}], "label-sm": ["11px", {"lineHeight": "14px", "letterSpacing": "0.05em", "fontWeight": "600"}] } } } };</script><style>@layer base{html,body{width:100%;margin:0;padding:0;background-color:#faf8ff;}.pb-safe{padding-bottom:calc(env(safe-area-inset-bottom, 0px) + 0.5rem);}.pt-safe{padding-top:env(safe-area-inset-top, 0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}input,button,a{-webkit-tap-highlight-color:transparent;}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="min-h-full bg-surface text-on-surface flex flex-col font-body-md text-body-md"><header class="fixed top-0 inset-x-0 z-50 bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] pt-safe"><div class="h-16 px-gutter flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm min-w-0"><button class="w-11 h-11 flex items-center justify-center rounded-xl hover:bg-surface-container transition-colors text-on-surface-variant" onclick="document.getElementById('side-drawer').classList.toggle('-translate-x-full');document.getElementById('drawer-backdrop').classList.toggle('hidden');" type="button"><span class="material-symbols-outlined text-[24px]">menu</span></button><div class="flex items-center gap-space-xs min-w-0"><img alt="MealTrack Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WKMcyzS2fXMBJjoDT2fuRc4X320g_bpLK9T7-VC1PChSnNayf47RhvX6Fjkm7fOxZ75iXN7HMCTkr1FXWB2zUskpn3EC2AJBbpD_dXI19hEV2SxZi-X2dyVb33Dv3RNNigGl_16-1AfGOBFCyES7dCymwSAi7b55h4mPtMx8NnFM8-fbpfxMWb6_hkrtCCkXHSKyScf2XLoLVFJ_jJqa0SukJL7DIHfDawEZtzzcmBF883882595IZYyE"/><div class="flex flex-col"><div class="flex items-center gap-space-xs"><span class="font-headline-md text-headline-md tracking-tight text-on-surface font-bold truncate">MealTrack</span><span class="px-1.5 py-0.5 rounded bg-surface-container text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">ADMIN</span></div><div class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-secondary inline-block animate-pulse"></span><span class="font-label-sm text-label-sm text-secondary font-medium">Counter Online</span></div></div></div></div><div class="flex items-center gap-space-xs flex-shrink-0"><button class="w-11 h-11 flex items-center justify-center rounded-full hover:bg-surface-container relative transition-colors focus:outline-none" onclick="document.getElementById('profile-dropdown').classList.toggle('hidden')" type="button"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfDK9zn2khvr0fDagfCQcEE_F6yEv7A-qnTUI1zlnwCuUPbciPqnNg7F48auBQ6-V2IjkLHmwYrgDZRAgnP6yhAxkylNP0a4x98Vk9clKi4Jnt9C1XfFMjWF-rQ2d3QgCBDsqwuG5T7T66AjNzTsSn9ocgG0gw7E95aThnuGjEfF8baeHL9n21eZWpd6CqC29VNSXXUhH_JNFGaj9SZXV08fdaqxTKlM0tJLXV_HVdFn_JJbwSt5-N9Q"/></button></div></div><div class="hidden absolute right-4 top-16 w-64 bg-surface-container-lowest rounded-xl shadow-xl p-space-md flex flex-col gap-space-sm z-50 border-0" id="profile-dropdown"><div class="flex items-center gap-space-sm pb-space-sm"><img alt="Profile" class="w-10 h-10 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfDK9zn2khvr0fDagfCQcEE_F6yEv7A-qnTUI1zlnwCuUPbciPqnNg7F48auBQ6-V2IjkLHmwYrgDZRAgnP6yhAxkylNP0a4x98Vk9clKi4Jnt9C1XfFMjWF-rQ2d3QgCBDsqwuG5T7T66AjNzTsSn9ocgG0gw7E95aThnuGjEfF8baeHL9n21eZWpd6CqC29VNSXXUhH_JNFGaj9SZXV08fdaqxTKlM0tJLXV_HVdFn_JJbwSt5-N9Q"/><div class="flex flex-col min-w-0"><span class="font-headline-sm text-headline-sm text-on-surface truncate">Elena Rostova</span><span class="font-body-sm text-body-sm text-on-surface-variant truncate">elena@mealtrack.ops</span></div></div><div class="inline-flex items-center justify-start"><span class="px-2 py-0.5 rounded bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm uppercase font-semibold">Owner / Admin</span></div><div class="pt-space-xs"><a class="w-full flex items-center gap-space-xs px-space-sm py-2 rounded-lg text-error hover:bg-error-container hover:text-on-error-container font-label-md text-label-md transition-colors" data-path="login" href="#"><span class="material-symbols-outlined text-[18px]">logout</span><span>Sign Out</span></a></div></div></header><div class="hidden fixed inset-0 bg-inverse-surface/40 backdrop-blur-sm z-50 transition-opacity" id="drawer-backdrop" onclick="document.getElementById('side-drawer').classList.add('-translate-x-full');this.classList.add('hidden');"></div><aside class="fixed top-0 bottom-0 left-0 w-72 max-w-[85vw] bg-surface-container-lowest z-50 transform -translate-x-full transition-transform duration-300 ease-in-out flex flex-col shadow-2xl pt-safe" id="side-drawer"><div class="p-space-md flex items-center justify-between"><div class="flex items-center gap-space-xs"><img alt="MealTrack Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WKMcyzS2fXMBJjoDT2fuRc4X320g_bpLK9T7-VC1PChSnNayf47RhvX6Fjkm7fOxZ75iXN7HMCTkr1FXWB2zUskpn3EC2AJBbpD_dXI19hEV2SxZi-X2dyVb33Dv3RNNigGl_16-1AfGOBFCyES7dCymwSAi7b55h4mPtMx8NnFM8-fbpfxMWb6_hkrtCCkXHSKyScf2XLoLVFJ_jJqa0SukJL7DIHfDawEZtzzcmBF883882595IZYyE"/><span class="font-headline-md text-headline-md font-bold text-on-surface">MealTrack Hub</span></div><button class="w-11 h-11 flex items-center justify-center rounded-lg hover:bg-surface-container text-on-surface-variant" onclick="document.getElementById('side-drawer').classList.add('-translate-x-full');document.getElementById('drawer-backdrop').classList.add('hidden');" type="button"><span class="material-symbols-outlined">close</span></button></div><div class="flex-1 overflow-y-auto px-space-sm py-space-xs flex flex-col gap-1"><a class="flex items-center gap-space-sm px-space-md h-12 rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-on-surface" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[22px]">dashboard</span><span class="font-label-lg text-label-lg">Dashboard</span></a><a class="flex items-center gap-space-sm px-space-md h-12 rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-on-surface" data-path="customers" href="#"><span class="material-symbols-outlined text-[22px]">groups</span><span class="font-label-lg text-label-lg">Customers</span></a><a class="flex items-center gap-space-sm px-space-md h-12 rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-on-surface" data-path="subscriptions" href="#"><span class="material-symbols-outlined text-[22px]">card_membership</span><span class="font-label-lg text-label-lg">Subscriptions</span></a><a class="flex items-center gap-space-sm px-space-md h-12 rounded-xl text-primary bg-primary-fixed hover:bg-surface-container-high" data-path="meal-counter" href="#"><span class="material-symbols-outlined text-[22px]">countertops</span><span class="font-label-lg text-label-lg font-bold">Meal Counter (Active)</span></a><a class="flex items-center gap-space-sm px-space-md h-12 rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-on-surface" data-path="meal-history" href="#"><span class="material-symbols-outlined text-[22px]">cloud_upload</span><span class="font-label-lg text-label-lg">Meal History</span></a><a class="flex items-center gap-space-sm px-space-md h-12 rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-on-surface" data-path="reports" href="#"><span class="material-symbols-outlined text-[22px]">monitoring</span><span class="font-label-lg text-label-lg">Reports</span></a><a class="flex items-center gap-space-sm px-space-md h-12 rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-on-surface" data-path="settings" href="#"><span class="material-symbols-outlined text-[22px]">settings</span><span class="font-label-lg text-label-lg">Settings</span></a></div><div class="p-space-md pb-safe bg-surface-container-low"><div class="flex items-center gap-space-xs"><img alt="Profile" class="w-9 h-9 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfDK9zn2khvr0fDagfCQcEE_F6yEv7A-qnTUI1zlnwCuUPbciPqnNg7F48auBQ6-V2IjkLHmwYrgDZRAgnP6yhAxkylNP0a4x98Vk9clKi4Jnt9C1XfFMjWF-rQ2d3QgCBDsqwuG5T7T66AjNzTsSn9ocgG0gw7E95aThnuGjEfF8baeHL9n21eZWpd6CqC29VNSXXUhH_JNFGaj9SZXV08fdaqxTKlM0tJLXV_HVdFn_JJbwSt5-N9Q"/><div class="flex flex-col min-w-0"><span class="font-label-md text-label-md text-on-surface font-semibold truncate">Elena Rostova</span><span class="font-body-sm text-body-sm text-on-surface-variant truncate">PROVIDER ADMIN</span></div></div></div></aside><main class="flex-1 flex flex-col relative w-full pt-16 pb-24 px-margin bg-surface"><div class="flex flex-col w-full space-y-space-md">
+<!-- Action Toast / Live Snack Feedback (Delight moment) -->
+<div class="hidden transform transition-all duration-300 ease-out flex items-center justify-between p-space-sm rounded-xl bg-inverse-surface text-inverse-on-surface shadow-xl" id="toast-notification">
+<div class="flex items-center gap-space-xs min-w-0">
+<span class="material-symbols-outlined text-secondary-fixed-dim text-[20px]">check_circle</span>
+<span class="font-label-md text-label-md truncate font-medium" id="toast-message">Customer record updated successfully.</span>
+</div>
+<button class="p-1 text-surface-container-highest hover:text-white rounded-lg" onclick="document.getElementById('toast-notification').classList.add('hidden')" type="button">
+<span class="material-symbols-outlined text-[16px]">close</span>
+</button>
+</div>
+<!-- Page Header & Quick Dispatch Summary -->
+<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-space-sm">
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-on-surface">Customers</h1>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-highest text-on-surface-variant font-label-sm text-label-sm font-semibold">412 Total</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">Manage your meal service customers, tokens &amp; renewals.</p>
+</div>
+<button class="inline-flex items-center justify-center gap-space-xs h-11 px-space-md rounded-xl bg-primary text-on-primary font-label-lg text-label-lg shadow-md shadow-primary/20 hover:bg-primary-container active:scale-[0.98] transition-all" onclick="openAddCustomerModal()" type="button">
+<span class="material-symbols-outlined text-[20px]">person_add</span>
+<span>+ Add Customer</span>
+</button>
+</div>
+<!-- Real-Time Metrics Micro Bar -->
+<div class="grid grid-cols-3 gap-space-xs">
+<div class="bg-surface-container-lowest p-space-sm rounded-xl shadow-sm flex flex-col justify-center">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Active Portions</span>
+<span class="font-data-metric text-[20px] leading-tight text-on-surface font-bold">388</span>
+</div>
+<div class="bg-surface-container-lowest p-space-sm rounded-xl shadow-sm flex flex-col justify-center">
+<span class="font-label-sm text-label-sm text-tertiary">Needs Refill</span>
+<div class="flex items-center gap-1">
+<span class="font-data-metric text-[20px] leading-tight text-tertiary font-bold">14</span>
+<span class="material-symbols-outlined text-tertiary text-[16px]">notifications_active</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-space-sm rounded-xl shadow-sm flex flex-col justify-center">
+<span class="font-label-sm text-label-sm text-secondary">Served Today</span>
+<span class="font-data-metric text-[20px] leading-tight text-secondary font-bold">186</span>
+</div>
+</div>
+<!-- Search & Filter Controls -->
+<div class="flex flex-col gap-space-sm bg-surface-container-lowest p-space-sm rounded-xl shadow-sm">
+<!-- Search Bar -->
+<div class="relative flex items-center w-full">
+<span class="material-symbols-outlined absolute left-3 text-on-surface-variant text-[20px] pointer-events-none">search</span>
+<input class="w-full h-11 pl-10 pr-10 rounded-xl bg-surface-container-low text-on-surface placeholder:text-on-surface-variant/70 font-body-md text-body-md focus:outline-none focus:bg-surface-container-lowest focus:shadow-[0_0_0_2px_#3525cd] transition-all" id="customer-search-input" onkeyup="handleCustomerFilter(this.value)" placeholder="Search by name, phone, or 4-digit ID..." type="text"/>
+<button class="hidden absolute right-3 text-on-surface-variant hover:text-on-surface" id="clear-search-btn" onclick="clearSearch()" type="button">
+<span class="material-symbols-outlined text-[18px]">cancel</span>
+</button>
+</div>
+<!-- Filter Segment Tabs with strict separation -->
+<div class="flex items-center gap-space-xs overflow-x-auto pb-0.5" role="tablist">
+<button aria-selected="true" class="filter-tab flex-shrink-0 flex items-center gap-1.5 px-3 py-2 rounded-xl bg-primary text-on-primary font-label-md text-label-md font-semibold transition-all shadow-sm" onclick="setActiveTab(this, 'active')" role="tab" type="button">
+<span>Active Customers</span>
+<span class="px-1.5 py-0.2 rounded-full bg-surface-container-lowest/20 text-on-primary font-label-sm text-label-sm">388</span>
+</button>
+<button aria-selected="false" class="filter-tab flex-shrink-0 flex items-center gap-1.5 px-3 py-2 rounded-xl bg-surface-container text-on-surface-variant font-label-md text-label-md hover:text-on-surface transition-all" onclick="setActiveTab(this, 'all')" role="tab" type="button">
+<span>All Customers</span>
+<span class="px-1.5 py-0.2 rounded-full bg-surface-container-highest text-on-surface-variant font-label-sm text-label-sm">412</span>
+</button>
+<button aria-selected="false" class="filter-tab flex-shrink-0 flex items-center gap-1.5 px-3 py-2 rounded-xl bg-surface-container text-on-surface-variant font-label-md text-label-md hover:text-on-surface transition-all" onclick="setActiveTab(this, 'archived')" role="tab" type="button">
+<span>Archived</span>
+<span class="px-1.5 py-0.2 rounded-full bg-surface-container-highest text-on-surface-variant font-label-sm text-label-sm">24</span>
+</button>
+</div>
+</div>
+<!-- Customer Cards List -->
+<div class="flex flex-col gap-space-sm" id="customer-list-container">
+<!-- Customer Card 1: Low balance state with visual urgency -->
+<article class="customer-card relative overflow-hidden bg-surface-container-lowest rounded-xl shadow-sm hover:shadow-md transition-all p-space-md flex flex-col gap-space-sm" data-category="active" data-id="4827" data-name="Marcus Vance">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex items-start gap-space-sm min-w-0">
+<div class="relative flex-shrink-0">
+<img class="w-12 h-12 rounded-xl object-cover bg-surface-container" data-alt="Close up profile portrait of Marcus Vance, a professional man in his thirties smiling softly, warm natural kitchen ambient lighting, vibrant healthy aura" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAD9COHLr-rO932FllclbB79OkozXvEv4-dO_GCwkjWAT9d9AvKiiLfb45pn884zaJRTdrlioeCCx_WAxaSZcSYiCtEe5NiqjVxzCKe0UkSL4HYU3KoAEE8VRC3nPi0IxvcSjDecb_V-tH0L1slcJqqe-I6KYvgcgAlcMGprGB701LCquuRAGsOaaExUfpHNpy7BCDIB6-TO5tCZIrck50HbsLxDej7cWnoMFUfDh3h07Q3wbbh_F43WQ"/>
+<span class="absolute -bottom-1 -right-1 w-3.5 h-3.5 rounded-full bg-secondary ring-2 ring-surface-container-lowest flex items-center justify-center"></span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5 flex-wrap">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold truncate">Marcus Vance</span>
+<span class="px-1.5 py-0.5 rounded-md bg-surface-container font-label-sm text-label-sm font-semibold text-primary">#4827</span>
+</div>
+<a class="inline-flex items-center gap-1 font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="tel:+15552345678">
+<span class="material-symbols-outlined text-[14px]">call</span>
+<span>+1 (555) 234-5678</span>
+</a>
+</div>
+</div>
+<!-- Status Badges -->
+<div class="flex flex-col items-end gap-1 flex-shrink-0">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span>Active</span>
+</span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm font-bold">
+<span class="material-symbols-outlined text-[13px]">warning</span>
+<span>Low Balance</span>
+</span>
+</div>
+</div>
+<!-- Plan Details & Progress Meter -->
+<div class="bg-surface-container-low p-space-sm rounded-lg flex flex-col gap-1.5">
+<div class="flex items-center justify-between font-label-md text-label-md">
+<span class="text-on-surface font-medium truncate">Standard Lunch 30-Day</span>
+<span class="font-bold text-tertiary">1 / 30 left</span>
+</div>
+<!-- Visual Progress Tracker -->
+<div class="w-full h-2 rounded-full bg-surface-container-highest overflow-hidden">
+<div class="h-full rounded-full bg-tertiary-container transition-all" style="width: 3.33%;"></div>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm pt-0.5">
+<span>Diet: Nut Allergy, High Protein</span>
+<span class="text-tertiary font-semibold">Expires in 2 days</span>
+</div>
+</div>
+<!-- Tactical Quick Action Bar -->
+<div class="flex items-center justify-between pt-1 gap-space-xs">
+<button class="flex-1 flex items-center justify-center gap-1.5 h-9 rounded-lg bg-primary text-on-primary font-label-md text-label-md font-semibold hover:bg-primary-container active:scale-[0.98] transition-all shadow-sm" onclick="recordMeal('Marcus Vance', '#4827', 1)" type="button">
+<span class="material-symbols-outlined text-[18px]">check_box</span>
+<span>Record Meal</span>
+</button>
+<button class="h-9 px-3 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md font-medium hover:bg-surface-container-high transition-colors" onclick="openEditModal('Marcus Vance', '4827')" type="button">
+          Edit
+        </button>
+<button class="h-9 w-9 flex items-center justify-center rounded-lg bg-surface-container text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" onclick="toggleQuickMenu(this)" type="button">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+</article>
+<!-- Customer Card 2: Priya Patel -->
+<article class="customer-card bg-surface-container-lowest rounded-xl shadow-sm hover:shadow-md transition-all p-space-md flex flex-col gap-space-sm" data-category="active" data-id="1042" data-name="Priya Patel">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex items-start gap-space-sm min-w-0">
+<div class="relative flex-shrink-0">
+<img class="w-12 h-12 rounded-xl object-cover bg-surface-container" data-alt="Portrait of Priya Patel, a young professional woman wearing chef friendly attire smiling brightly, warm indoor kitchen kitchenware soft focus background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZ0V5iGYdAY-TcC9jLM_VtafsjJ9bTEHENLQr8fZkKzhxkL19VtwwxME4UPR6ghwUGcdU-HAq6tDVnkJ1-tloa8eg0ZGLrDFxv_NNrxZtXZvrbkuzvphnEQWOVDbkh2P8F80-G2eCFr7zeEE3Dtc_QcBBykfbqPfBtxjml67w3VnyIgyv3JszjnPaZLmK-7AfL3ixfOBZq2SN2Ifo0LAAZIktUeOr2ST9T9D07nd8hatk4GcnbmFiHdw"/>
+<span class="absolute -bottom-1 -right-1 w-3.5 h-3.5 rounded-full bg-secondary ring-2 ring-surface-container-lowest flex items-center justify-center"></span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5 flex-wrap">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold truncate">Priya Patel</span>
+<span class="px-1.5 py-0.5 rounded-md bg-surface-container font-label-sm text-label-sm font-semibold text-primary">#1042</span>
+</div>
+<a class="inline-flex items-center gap-1 font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="tel:+15558765432">
+<span class="material-symbols-outlined text-[14px]">call</span>
+<span>+1 (555) 876-5432</span>
+</a>
+</div>
+</div>
+<!-- Status Badge -->
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-bold flex-shrink-0">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span>Active</span>
+</span>
+</div>
+<!-- Plan Details & Progress Meter -->
+<div class="bg-surface-container-low p-space-sm rounded-lg flex flex-col gap-1.5">
+<div class="flex items-center justify-between font-label-md text-label-md">
+<span class="text-on-surface font-medium truncate">Executive Thali (60 Meals)</span>
+<span class="font-bold text-secondary">24 / 60 left</span>
+</div>
+<!-- Progress Bar -->
+<div class="w-full h-2 rounded-full bg-surface-container-highest overflow-hidden">
+<div class="h-full rounded-full bg-secondary transition-all" style="width: 40%;"></div>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm pt-0.5">
+<span>Diet: Pure Vegetarian (Jain Option)</span>
+<span>Next delivery: Today 12:30 PM</span>
+</div>
+</div>
+<!-- Tactical Quick Action Bar -->
+<div class="flex items-center justify-between pt-1 gap-space-xs">
+<button class="flex-1 flex items-center justify-center gap-1.5 h-9 rounded-lg bg-primary text-on-primary font-label-md text-label-md font-semibold hover:bg-primary-container active:scale-[0.98] transition-all shadow-sm" onclick="recordMeal('Priya Patel', '#1042', 24)" type="button">
+<span class="material-symbols-outlined text-[18px]">check_box</span>
+<span>Record Meal</span>
+</button>
+<button class="h-9 px-3 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md font-medium hover:bg-surface-container-high transition-colors" onclick="openEditModal('Priya Patel', '1042')" type="button">
+          Edit
+        </button>
+<button class="h-9 w-9 flex items-center justify-center rounded-lg bg-surface-container text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" onclick="toggleQuickMenu(this)" type="button">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+</article>
+<!-- Customer Card 3: Liam O'Connor -->
+<article class="customer-card bg-surface-container-lowest rounded-xl shadow-sm hover:shadow-md transition-all p-space-md flex flex-col gap-space-sm" data-category="active" data-id="2190" data-name="Liam O'Connor">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex items-start gap-space-sm min-w-0">
+<div class="relative flex-shrink-0">
+<img class="w-12 h-12 rounded-xl object-cover bg-surface-container" data-alt="Portrait photo of Liam O'Connor, middle aged man with glasses, looking confident and cheerful, daylight studio illumination with warm wooden accents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8u41OGqrqWs7_sue_gSCjySiKBb7c7fRVq2QvJ2rscHn49h3_TRpCCTk3Hst3DMVp4G8QepLQfkgT8rKr8f-pVfM30tDa9Xr-pgwNH22CRtxIpTKaduE5VpcQSTWEG3Kw2ob10W6yLN4CvWj9tkuQLKzDeMUu-V27mm8HRZVBZuggeBt13fvNeg3f9s01MR3z2KpTMFCxWRRyujoP6-AFp-EEvsFhykHaL3gVrjixMfjtvmrCEIeDbA"/>
+<span class="absolute -bottom-1 -right-1 w-3.5 h-3.5 rounded-full bg-secondary ring-2 ring-surface-container-lowest flex items-center justify-center"></span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5 flex-wrap">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold truncate">Liam O'Connor</span>
+<span class="px-1.5 py-0.5 rounded-md bg-surface-container font-label-sm text-label-sm font-semibold text-primary">#2190</span>
+</div>
+<a class="inline-flex items-center gap-1 font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="tel:+15554321098">
+<span class="material-symbols-outlined text-[14px]">call</span>
+<span>+1 (555) 432-1098</span>
+</a>
+</div>
+</div>
+<!-- Status Badge -->
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-bold flex-shrink-0">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span>Active</span>
+</span>
+</div>
+<!-- Plan Details & Progress Meter -->
+<div class="bg-surface-container-low p-space-sm rounded-lg flex flex-col gap-1.5">
+<div class="flex items-center justify-between font-label-md text-label-md">
+<span class="text-on-surface font-medium truncate">Monthly Dinner Box</span>
+<span class="font-bold text-on-surface">18 / 30 left</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container-highest overflow-hidden">
+<div class="h-full rounded-full bg-primary transition-all" style="width: 60%;"></div>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm pt-0.5">
+<span>Diet: Standard Balanced / No Seafood</span>
+<span>Route: Dispatch Zone B</span>
+</div>
+</div>
+<!-- Tactical Quick Action Bar -->
+<div class="flex items-center justify-between pt-1 gap-space-xs">
+<button class="flex-1 flex items-center justify-center gap-1.5 h-9 rounded-lg bg-primary text-on-primary font-label-md text-label-md font-semibold hover:bg-primary-container active:scale-[0.98] transition-all shadow-sm" onclick="recordMeal('Liam O\'Connor', '#2190', 18)" type="button">
+<span class="material-symbols-outlined text-[18px]">check_box</span>
+<span>Record Meal</span>
+</button>
+<button class="h-9 px-3 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md font-medium hover:bg-surface-container-high transition-colors" onclick="openEditModal('Liam O\'Connor', '2190')" type="button">
+          Edit
+        </button>
+<button class="h-9 w-9 flex items-center justify-center rounded-lg bg-surface-container text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" onclick="toggleQuickMenu(this)" type="button">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+</article>
+<!-- Customer Card 4: Elena Gomez (Inactive / Expired Plan) -->
+<article class="customer-card bg-surface-container-lowest rounded-xl shadow-sm p-space-md flex flex-col gap-space-sm opacity-90 hover:opacity-100 transition-all" data-category="archived" data-id="9012" data-name="Elena Gomez">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex items-start gap-space-sm min-w-0">
+<div class="relative flex-shrink-0">
+<img class="w-12 h-12 rounded-xl object-cover bg-surface-container grayscale" data-alt="Portrait photo of Elena Gomez, casual modern setting with soft neutral light, smiling warm expression, high resolution lifestyle portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHe8kzTqNzJHaol6pIgIkt0PKbMIpREWZiJgwCKIwmG9AgtAldLie6pqpUAZLsHvRskLe_5jt4aWFsjZyV7uBEUVZxBosFzCH84qsRPi6IREQUkQTNAVB07uX3inbnk2R44-xWecgaqWGlUUejwq-TIvRrXMZZafEOQCwUMzkTIUc-Vzlzv6O3Dsbvm5ghnuG_GkS5WR4cnPNTQyqYs8Mdt79khJO9DUfa9hgLMaJhIjDXaxU1SOCFxg"/>
+<span class="absolute -bottom-1 -right-1 w-3.5 h-3.5 rounded-full bg-outline ring-2 ring-surface-container-lowest flex items-center justify-center"></span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5 flex-wrap">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold truncate">Elena Gomez</span>
+<span class="px-1.5 py-0.5 rounded-md bg-surface-container font-label-sm text-label-sm font-semibold text-outline">#9012</span>
+</div>
+<a class="inline-flex items-center gap-1 font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="tel:+15556781234">
+<span class="material-symbols-outlined text-[14px]">call</span>
+<span>+1 (555) 678-1234</span>
+</a>
+</div>
+</div>
+<!-- Expired Status Badge -->
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm font-bold flex-shrink-0">
+<span class="w-1.5 h-1.5 rounded-full bg-outline"></span>
+<span>Expired</span>
+</span>
+</div>
+<!-- Plan Details (Expired state) -->
+<div class="bg-surface-container-low p-space-sm rounded-lg flex flex-col gap-1.5">
+<div class="flex items-center justify-between font-label-md text-label-md">
+<span class="text-on-surface-variant font-medium">No Active Plan</span>
+<span class="font-semibold text-outline">0 / 0 Meals</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container-highest overflow-hidden">
+<div class="h-full rounded-full bg-outline-variant" style="width: 0%;"></div>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm pt-0.5">
+<span>Last active plan ended 12 days ago</span>
+<span class="font-semibold text-tertiary">Awaiting Renewal</span>
+</div>
+</div>
+<!-- Quick Action Bar for Renewal -->
+<div class="flex items-center justify-between pt-1 gap-space-xs">
+<button class="flex-1 flex items-center justify-center gap-1.5 h-9 rounded-lg bg-secondary text-on-secondary font-label-md text-label-md font-semibold hover:bg-on-secondary-container active:scale-[0.98] transition-all shadow-sm" onclick="triggerRenewModal('Elena Gomez', '#9012')" type="button">
+<span class="material-symbols-outlined text-[18px]">autorenew</span>
+<span>Renew Subscription</span>
+</button>
+<button class="h-9 px-4 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md font-medium hover:bg-surface-container-high transition-colors" onclick="openEditModal('Elena Gomez', '9012')" type="button">
+          Edit
+        </button>
+</div>
+</article>
+</div>
+<!-- Empty Search State (Dynamically displayed if search has 0 results) -->
+<div class="hidden flex-col items-center justify-center py-space-xl px-space-md text-center bg-surface-container-lowest rounded-xl shadow-sm" id="empty-state">
+<div class="w-16 h-16 rounded-full bg-surface-container-high flex items-center justify-center text-primary mb-space-sm">
+<span class="material-symbols-outlined text-[32px]">person_search</span>
+</div>
+<h3 class="font-headline-md text-headline-md font-bold text-on-surface">No customers matched your filter</h3>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xs mt-1">Check for typos in ID, phone or name, or register a new customer in seconds.</p>
+<button class="mt-space-md inline-flex items-center gap-1.5 h-10 px-space-md rounded-xl bg-primary text-on-primary font-label-md text-label-md font-semibold hover:bg-primary-container transition-all shadow-md" onclick="openAddCustomerModal()" type="button">
+<span class="material-symbols-outlined text-[18px]">add</span>
+<span>Add New Customer</span>
+</button>
+</div>
+<!-- MODAL: Add New Customer Component Sheet -->
+<div class="hidden fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-space-md transition-opacity duration-300" id="add-customer-modal">
+<!-- Backdrop -->
+<div class="fixed inset-0 bg-inverse-surface/50 backdrop-blur-sm transition-opacity" onclick="closeAddCustomerModal()"></div>
+<!-- Modal Dialog Sheet -->
+<div class="relative w-full max-w-lg bg-surface-container-lowest rounded-t-2xl sm:rounded-2xl shadow-2xl p-space-md sm:p-space-lg flex flex-col gap-space-md z-10 max-h-[813px] overflow-y-auto">
+<!-- Modal Header -->
+<div class="flex items-start justify-between pb-space-xs">
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<div class="w-8 h-8 rounded-lg bg-primary-fixed flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">person_add</span>
+</div>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-on-surface">Add New Customer</h2>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Assign a 4-digit Member ID and customer contact details.</p>
+</div>
+<button class="w-9 h-9 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" onclick="closeAddCustomerModal()" type="button">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<!-- Form Inputs -->
+<form class="flex flex-col gap-space-sm" id="new-customer-form" onsubmit="handleCustomerSubmit(event)">
+<!-- Member ID Row -->
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<label class="font-label-md text-label-md font-semibold text-on-surface" for="member-id-input">4-Digit Member ID</label>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[13px]">bolt</span>
+<span>Auto-generated</span>
+</span>
+</div>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-on-surface-variant text-[18px]">badge</span>
+<input class="w-full h-11 pl-10 pr-10 rounded-xl bg-surface-container font-headline-sm text-headline-sm font-bold text-primary tracking-wider focus:outline-none cursor-default" id="member-id-input" readonly="" type="text" value="5892"/>
+<button class="absolute right-3 p-1 text-on-surface-variant hover:text-primary rounded-md" onclick="regenerateId()" title="Regenerate random unique ID" type="button">
+<span class="material-symbols-outlined text-[20px]">sync</span>
+</button>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Used at counter terminal for rapid single-tap meal punching.</span>
+</div>
+<!-- Full Name -->
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-md font-semibold text-on-surface" for="full-name-input">Full Name</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-on-surface-variant text-[18px]">person</span>
+<input class="w-full h-11 pl-10 pr-3 rounded-xl bg-surface-container-low text-on-surface placeholder:text-on-surface-variant/60 font-body-md text-body-md focus:outline-none focus:bg-surface-container-lowest focus:shadow-[0_0_0_2px_#3525cd] transition-all" id="full-name-input" placeholder="e.g. Johnathan Miller" required="" type="text"/>
+</div>
+</div>
+<!-- Phone Number -->
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-md font-semibold text-on-surface" for="phone-input">Phone Number</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-on-surface-variant text-[18px]">smartphone</span>
+<input class="w-full h-11 pl-10 pr-3 rounded-xl bg-surface-container-low text-on-surface placeholder:text-on-surface-variant/60 font-body-md text-body-md focus:outline-none focus:bg-surface-container-lowest focus:shadow-[0_0_0_2px_#3525cd] transition-all" id="phone-input" placeholder="+1 (555) 0192" required="" type="tel"/>
+</div>
+</div>
+<!-- Dietary Preference / Initial Notes -->
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<label class="font-label-md text-label-md font-semibold text-on-surface" for="diet-input">Dietary Restrictions / Initial Notes</label>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Optional</span>
+</div>
+<div class="relative">
+<textarea class="w-full p-3 rounded-xl bg-surface-container-low text-on-surface placeholder:text-on-surface-variant/60 font-body-md text-body-md focus:outline-none focus:bg-surface-container-lowest focus:shadow-[0_0_0_2px_#3525cd] transition-all resize-none" id="diet-input" placeholder="e.g. Vegetarian / Nut Allergy / Prefers Gluten-Free rotis" rows="2"></textarea>
+</div>
+</div>
+<!-- Quick Tags for Dietary presets (delightful micro-feature) -->
+<div class="flex items-center gap-1.5 flex-wrap pt-0.5">
+<button class="px-2.5 py-1 rounded-full bg-surface-container text-on-surface font-label-sm text-label-sm hover:bg-surface-container-high transition-colors" onclick="appendDietTag('Vegetarian')" type="button">+ Vegetarian</button>
+<button class="px-2.5 py-1 rounded-full bg-surface-container text-on-surface font-label-sm text-label-sm hover:bg-surface-container-high transition-colors" onclick="appendDietTag('Nut Allergy')" type="button">+ Nut Allergy</button>
+<button class="px-2.5 py-1 rounded-full bg-surface-container text-on-surface font-label-sm text-label-sm hover:bg-surface-container-high transition-colors" onclick="appendDietTag('No Spicy')" type="button">+ Mild Spice</button>
+</div>
+<!-- Modal Footer Actions -->
+<div class="flex items-center justify-end gap-space-xs pt-space-sm mt-space-xs">
+<button class="h-11 px-space-md rounded-xl bg-surface-container text-on-surface font-label-lg text-label-lg font-medium hover:bg-surface-container-high transition-colors" onclick="closeAddCustomerModal()" type="button">
+            Cancel
+          </button>
+<button class="inline-flex items-center justify-center gap-1.5 h-11 px-space-md rounded-xl bg-primary text-on-primary font-label-lg text-label-lg font-semibold shadow-md shadow-primary/20 hover:bg-primary-container active:scale-[0.98] transition-all" type="submit">
+<span class="material-symbols-outlined text-[18px]">save</span>
+<span>Save Customer</span>
+</button>
+</div>
+</form>
+</div>
+</div>
+</div>
+<script>
+  function openAddCustomerModal() {
+    const modal = document.getElementById('add-customer-modal');
+    modal.classList.remove('hidden');
+    setTimeout(() => {
+      document.getElementById('full-name-input').focus();
+    }, 100);
+  }
+
+  function closeAddCustomerModal() {
+    document.getElementById('add-customer-modal').classList.add('hidden');
+  }
+
+  function regenerateId() {
+    const randomId = Math.floor(1000 + Math.random() * 9000);
+    document.getElementById('member-id-input').value = randomId;
+    showToast(`New unique member ID assigned: #${randomId}`);
+  }
+
+  function appendDietTag(tag) {
+    const dietInput = document.getElementById('diet-input');
+    if (dietInput.value.includes(tag)) return;
+    dietInput.value = dietInput.value ? `${dietInput.value}, ${tag}` : tag;
+  }
+
+  function handleCustomerSubmit(event) {
+    event.preventDefault();
+    const name = document.getElementById('full-name-input').value;
+    const id = document.getElementById('member-id-input').value;
+    
+    closeAddCustomerModal();
+    showToast(`Registered ${name} as Member #${id}! Ready to assign plan.`);
+    document.getElementById('new-customer-form').reset();
+  }
+
+  function recordMeal(customerName, id, remainingCount) {
+    if (remainingCount <= 0) {
+      showToast(`Warning: ${customerName} has no remaining meal credits. Please renew first.`);
+      return;
+    }
+    showToast(`Meal dispatched for ${customerName} (${id}). Remaining credits: ${remainingCount - 1}`);
+  }
+
+  function triggerRenewModal(customerName, id) {
+    showToast(`Opening plan renewal terminal for ${customerName} (${id})...`);
+  }
+
+  function openEditModal(customerName, id) {
+    showToast(`Editing profile settings for ${customerName} (#${id})`);
+  }
+
+  function toggleQuickMenu(button) {
+    showToast("Quick options: View attendance log, pause plan, or print QR badge.");
+  }
+
+  function showToast(message) {
+    const toast = document.getElementById('toast-notification');
+    const toastMsg = document.getElementById('toast-message');
+    toastMsg.innerText = message;
+    toast.classList.remove('hidden');
+    clearTimeout(window._toastTimeout);
+    window._toastTimeout = setTimeout(() => {
+      toast.classList.add('hidden');
+    }, 4000);
+  }
+
+  function handleCustomerFilter(searchTerm) {
+    const term = searchTerm.toLowerCase().trim();
+    const clearBtn = document.getElementById('clear-search-btn');
+    if (term.length > 0) {
+      clearBtn.classList.remove('hidden');
+    } else {
+      clearBtn.classList.add('hidden');
+    }
+
+    const cards = document.querySelectorAll('.customer-card');
+    let visibleCount = 0;
+
+    cards.forEach(card => {
+      const name = card.getAttribute('data-name')?.toLowerCase() || '';
+      const id = card.getAttribute('data-id')?.toLowerCase() || '';
+      const matches = name.includes(term) || id.includes(term);
+      if (matches) {
+        card.style.display = 'flex';
+        visibleCount++;
+      } else {
+        card.style.display = 'none';
+      }
+    });
+
+    const emptyState = document.getElementById('empty-state');
+    if (visibleCount === 0) {
+      emptyState.classList.remove('hidden');
+      emptyState.classList.add('flex');
+    } else {
+      emptyState.classList.add('hidden');
+      emptyState.classList.remove('flex');
+    }
+  }
+
+  function clearSearch() {
+    const searchInput = document.getElementById('customer-search-input');
+    searchInput.value = '';
+    handleCustomerFilter('');
+    searchInput.focus();
+  }
+
+  function setActiveTab(button, filterType) {
+    // Reset tabs
+    document.querySelectorAll('.filter-tab').forEach(tab => {
+      tab.setAttribute('aria-selected', 'false');
+      tab.className = 'filter-tab flex-shrink-0 flex items-center gap-1.5 px-3 py-2 rounded-xl bg-surface-container text-on-surface-variant font-label-md text-label-md hover:text-on-surface transition-all';
+      const badge = tab.querySelector('span:last-child');
+      if (badge) {
+        badge.className = 'px-1.5 py-0.2 rounded-full bg-surface-container-highest text-on-surface-variant font-label-sm text-label-sm';
+      }
+    });
+
+    // Activate selected tab
+    button.setAttribute('aria-selected', 'true');
+    button.className = 'filter-tab flex-shrink-0 flex items-center gap-1.5 px-3 py-2 rounded-xl bg-primary text-on-primary font-label-md text-label-md font-semibold transition-all shadow-sm';
+    const activeBadge = button.querySelector('span:last-child');
+    if (activeBadge) {
+      activeBadge.className = 'px-1.5 py-0.2 rounded-full bg-surface-container-lowest/20 text-on-primary font-label-sm text-label-sm';
+    }
+
+    // Filter card list by status
+    const cards = document.querySelectorAll('.customer-card');
+    let visibleCount = 0;
+
+    cards.forEach(card => {
+      const category = card.getAttribute('data-category');
+      if (filterType === 'all') {
+        card.style.display = 'flex';
+        visibleCount++;
+      } else if (filterType === 'active' && category === 'active') {
+        card.style.display = 'flex';
+        visibleCount++;
+      } else if (filterType === 'archived' && category === 'archived') {
+        card.style.display = 'flex';
+        visibleCount++;
+      } else {
+        card.style.display = 'none';
+      }
+    });
+
+    const emptyState = document.getElementById('empty-state');
+    if (visibleCount === 0) {
+      emptyState.classList.remove('hidden');
+      emptyState.classList.add('flex');
+    } else {
+      emptyState.classList.add('hidden');
+      emptyState.classList.remove('flex');
+    }
+  }
+</script></main><nav class="fixed bottom-0 inset-x-0 z-40 bg-surface/90 backdrop-blur-xl pb-safe shadow-[0_-1px_10px_rgba(0,0,0,0.05)]" data-active-classes="text-primary font-bold"><div class="flex justify-around items-center h-16 px-space-xs"><a class="flex flex-col items-center justify-center min-w-[56px] h-12 gap-0.5 text-on-surface-variant hover:text-on-surface transition-colors" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[22px]">dashboard</span><span class="font-label-sm text-label-sm">Dashboard</span></a><a aria-current="page" class="flex flex-col items-center justify-center min-w-[56px] h-12 gap-0.5 transition-colors text-primary font-bold" data-path="customers" href="#"><span class="material-symbols-outlined text-[22px]">groups</span><span class="font-label-sm text-label-sm">Customers</span></a><a class="relative flex flex-col items-center justify-center -top-3" data-path="meal-counter" href="#"><div class="w-13 h-13 p-3 rounded-full bg-primary-container text-on-primary shadow-lg shadow-primary/30 flex items-center justify-center"><span class="material-symbols-outlined text-[26px]">qr_code_scanner</span></div><span class="font-label-sm text-label-sm text-primary font-bold mt-1">Dispatch</span></a><a class="flex flex-col items-center justify-center min-w-[56px] h-12 gap-0.5 text-on-surface-variant hover:text-on-surface transition-colors" data-path="subscriptions" href="#"><span class="material-symbols-outlined text-[22px]">card_membership</span><span class="font-label-sm text-label-sm">Plans</span></a><a class="flex flex-col items-center justify-center min-w-[56px] h-12 gap-0.5 text-on-surface-variant hover:text-on-surface transition-colors" data-path="reports" href="#"><span class="material-symbols-outlined text-[22px]">bar_chart</span><span class="font-label-sm text-label-sm">Reports</span></a></div></nav></body></html>
