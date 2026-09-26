@@ -9,7 +9,7 @@ export async function GET(request) {
     const startDate = searchParams.get('startDate') || undefined;
     const endDate = searchParams.get('endDate') || undefined;
 
-    const report = await getOperationalReport(user.providerId, { startDate, endDate });
+    const report = await getOperationalReport(user.providerId, { startDate, endDate, includeRecords: true });
     const csvContent = generateCSVReport(report.mealRecords);
 
     const filename = `MealTrack_Ledger_Export_${new Date().toISOString().slice(0, 10)}.csv`;

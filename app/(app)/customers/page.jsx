@@ -22,6 +22,8 @@ export default function CustomersPage() {
   const [search, setSearch] = useState('');
   const [filter, setFilter] = useState('ACTIVE');
   const [loading, setLoading] = useState(true);
+  const [page, setPage] = useState(1);
+  const [metadata, setMetadata] = useState(null);
 
   // Modal State
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -30,17 +32,18 @@ export default function CustomersPage() {
   const fetchCustomers = useCallback(async () => {
     setLoading(true);
     try {
-      const res = await fetch(`/api/customers?search=${encodeURIComponent(search)}&filter=${filter}`);
+      const res = await fetch(`/api/customers?search=${encodeURIComponent(search)}&filter=${filter}&page=${page}&limit=50`);
       const data = await res.json();
       if (res.ok) {
         setCustomers(data.customers || []);
+        setMetadata(data.metadata || null);
       }
     } catch (err) {
       console.error('Failed to fetch customers:', err);
     } finally {
       setLoading(false);
     }
-  }, [search, filter]);
+  }, [search, filter, page]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -104,7 +107,10 @@ export default function CustomersPage() {
           <input
             type="text"
             value={search}
-            onChange={(e) => setSearch(e.target.value)}
+            onChange={(e) => {
+              setSearch(e.target.value);
+              setPage(1);
+            }}
             placeholder="Search by 4-digit ID (e.g. 1001), name, or phone..."
             className="w-full rounded-xl border border-slate-200 bg-slate-50/50 pl-10 pr-4 py-2 text-sm text-slate-900 focus:border-[#3525CD] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#3525CD]/20"
           />
@@ -115,7 +121,10 @@ export default function CustomersPage() {
           {['ACTIVE', 'ALL', 'ARCHIVED'].map((f) => (
             <button
               key={f}
-              onClick={() => setFilter(f)}
+              onClick={() => {
+                setFilter(f);
+                setPage(1);
+              }}
               className={`rounded-lg px-3 py-1.5 text-xs font-bold transition-all ${
                 filter === f
                   ? 'bg-white text-[#3525CD] shadow-sm'
@@ -273,6 +282,31 @@ export default function CustomersPage() {
               </div>
             </div>
           ))}
+        </div>
+      )}
+
+      {/* Pagination Controls */}
+      {!loading && metadata && metadata.totalPages > 1 && (
+        <div className="flex items-center justify-between border-t border-slate-200 pt-4">
+          <span className="text-sm text-slate-500">
+            Showing page {metadata.currentPage} of {metadata.totalPages} ({metadata.totalRecords} total)
+          </span>
+          <div className="flex gap-2">
+            <button
+              disabled={!metadata.hasPrevious}
+              onClick={() => setPage((p) => Math.max(1, p - 1))}
+              className="rounded-lg border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50 disabled:opacity-50"
+            >
+              Previous
+            </button>
+            <button
+              disabled={!metadata.hasNext}
+              onClick={() => setPage((p) => p + 1)}
+              className="rounded-lg border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50 disabled:opacity-50"
+            >
+              Next
+            </button>
+          </div>
         </div>
       )}
 

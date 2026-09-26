@@ -22,6 +22,8 @@ export default function SubscriptionsPage() {
   const [search, setSearch] = useState('');
   const [statusFilter, setStatusFilter] = useState('ALL');
   const [loading, setLoading] = useState(true);
+  const [page, setPage] = useState(1);
+  const [metadata, setMetadata] = useState(null);
 
   // Modals
   const [isSubModalOpen, setIsSubModalOpen] = useState(false);
@@ -31,21 +33,24 @@ export default function SubscriptionsPage() {
     setLoading(true);
     try {
       const [subRes, planRes] = await Promise.all([
-        fetch(`/api/subscriptions?status=${statusFilter}&search=${encodeURIComponent(search)}`),
+        fetch(`/api/subscriptions?status=${statusFilter}&search=${encodeURIComponent(search)}&page=${page}&limit=50`),
         fetch('/api/plans'),
       ]);
 
       const subData = await subRes.json();
       const planData = await planRes.json();
 
-      if (subRes.ok) setSubscriptions(subData.subscriptions || []);
+      if (subRes.ok) {
+        setSubscriptions(subData.subscriptions || []);
+        setMetadata(subData.metadata || null);
+      }
       if (planRes.ok) setPlans(planData.plans || []);
     } catch (err) {
       console.error('Failed to load subscriptions data:', err);
     } finally {
       setLoading(false);
     }
-  }, [statusFilter, search]);
+  }, [statusFilter, search, page]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -147,7 +152,10 @@ export default function SubscriptionsPage() {
           <input
             type="text"
             value={search}
-            onChange={(e) => setSearch(e.target.value)}
+            onChange={(e) => {
+              setSearch(e.target.value);
+              setPage(1);
+            }}
             placeholder="Search by customer name, mobile, or Member ID..."
             className="w-full rounded-xl border border-slate-200 bg-slate-50/50 pl-10 pr-4 py-2 text-sm text-slate-900 focus:border-[#3525CD] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#3525CD]/20"
           />
@@ -158,7 +166,10 @@ export default function SubscriptionsPage() {
           {['ALL', 'ACTIVE', 'EXHAUSTED', 'EXPIRED', 'PENDING_START'].map((st) => (
             <button
               key={st}
-              onClick={() => setStatusFilter(st)}
+              onClick={() => {
+                setStatusFilter(st);
+                setPage(1);
+              }}
               className={`whitespace-nowrap rounded-lg px-3 py-1.5 text-xs font-bold transition-all ${
                 statusFilter === st
                   ? 'bg-white text-[#3525CD] shadow-sm'
@@ -281,6 +292,31 @@ export default function SubscriptionsPage() {
               </div>
             );
           })}
+        </div>
+      )}
+
+      {/* Pagination Controls */}
+      {!loading && metadata && metadata.totalPages > 1 && (
+        <div className="flex items-center justify-between border-t border-slate-200 pt-4">
+          <span className="text-sm text-slate-500">
+            Showing page {metadata.currentPage} of {metadata.totalPages} ({metadata.totalRecords} total)
+          </span>
+          <div className="flex gap-2">
+            <button
+              disabled={!metadata.hasPrevious}
+              onClick={() => setPage((p) => Math.max(1, p - 1))}
+              className="rounded-lg border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50 disabled:opacity-50"
+            >
+              Previous
+            </button>
+            <button
+              disabled={!metadata.hasNext}
+              onClick={() => setPage((p) => p + 1)}
+              className="rounded-lg border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50 disabled:opacity-50"
+            >
+              Next
+            </button>
+          </div>
         </div>
       )}
 

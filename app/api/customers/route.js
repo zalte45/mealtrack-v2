@@ -8,9 +8,11 @@ export async function GET(request) {
     const { searchParams } = new URL(request.url);
     const search = searchParams.get('search') || '';
     const filter = searchParams.get('filter') || 'ACTIVE';
+    const page = searchParams.get('page') || 1;
+    const limit = searchParams.get('limit') || 50;
 
-    const customers = await getCustomers(user.providerId, { search, filter });
-    return NextResponse.json({ customers });
+    const result = await getCustomers(user.providerId, { search, filter, page, limit });
+    return NextResponse.json(result);
   } catch (error) {
     return NextResponse.json(
       { error: error.message || 'Failed to fetch customers' },
