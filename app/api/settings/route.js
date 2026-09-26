@@ -2,27 +2,6 @@ import { NextResponse } from 'next/server';
 import { requireAuthUser, requireOwnerRole } from '@/lib/session';
 import { prisma } from '@/lib/prisma';
 
-export async function GET(request) {
-  try {
-    const user = await requireAuthUser();
-    const provider = await prisma.provider.findUnique({
-      where: { id: user.providerId },
-      include: {
-        users: {
-          select: { id: true, name: true, email: true, role: true, createdAt: true },
-        },
-      },
-    });
-
-    return NextResponse.json({ provider });
-  } catch (error) {
-    return NextResponse.json(
-      { error: error.message || 'Failed to fetch settings' },
-      { status: error.status || 500 }
-    );
-  }
-}
-
 export async function PUT(request) {
   try {
     const user = await requireOwnerRole(); // Only OWNER/ADMIN can modify provider settings
